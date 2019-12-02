@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Prx-22-z8j">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="756"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BasicHotelInfoCell" rowHeight="163" id="sLv-mm-PJD" customClass="BasicHotelInfoTableViewCell" customModule="HotelsTestTask" customModuleProvider="target">
@@ -84,18 +84,18 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="distanceToTheCentre" destination="RgO-Hj-ETM" id="YOJ-qp-uo0"/>
-                                            <outlet property="hotelAddress" destination="PqK-dI-c4M" id="4WK-cH-NFI"/>
-                                            <outlet property="hotelName" destination="0z8-1Y-BPg" id="PZf-9M-UR5"/>
-                                            <outlet property="numberOfStars" destination="uJc-ew-fZz" id="7zF-lh-uqS"/>
-                                            <outlet property="numberOfSuitsAvailable" destination="8eQ-KB-61d" id="Heb-RF-Vcr"/>
+                                            <outlet property="distanceToTheCentreLabel" destination="RgO-Hj-ETM" id="YOJ-qp-uo0"/>
+                                            <outlet property="hotelAddressLabel" destination="PqK-dI-c4M" id="4WK-cH-NFI"/>
+                                            <outlet property="hotelNameLabel" destination="0z8-1Y-BPg" id="PZf-9M-UR5"/>
+                                            <outlet property="numberOfStarsLabel" destination="uJc-ew-fZz" id="7zF-lh-uqS"/>
+                                            <outlet property="numberOfSuitsAvailableLabel" destination="8eQ-KB-61d" id="Heb-RF-Vcr"/>
                                             <segue destination="B9C-96-aHE" kind="show" id="AyP-SP-3tE"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="IjE-mm-VDh">
-                                <rect key="frame" x="188.5" y="456.5" width="37" height="37"/>
+                                <rect key="frame" x="188.5" y="482.5" width="37" height="37"/>
                                 <color key="color" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
                         </subviews>
@@ -230,14 +230,14 @@
                     </view>
                     <navigationItem key="navigationItem" title="Belleclaire Hotel" id="nuM-te-wRB"/>
                     <connections>
-                        <outlet property="address" destination="uGy-ih-Zet" id="HjR-F5-xJN"/>
-                        <outlet property="distanceToTheCentre" destination="N4F-vC-L9t" id="92P-5H-die"/>
-                        <outlet property="hotelImage" destination="HMB-kz-3YE" id="gDe-j4-C49"/>
+                        <outlet property="addressLabel" destination="uGy-ih-Zet" id="HjR-F5-xJN"/>
+                        <outlet property="distanceToTheCentreLabel" destination="N4F-vC-L9t" id="92P-5H-die"/>
+                        <outlet property="hotelImageView" destination="HMB-kz-3YE" id="gDe-j4-C49"/>
                         <outlet property="imageActivityIndicator" destination="6B3-kd-ID7" id="Xpr-uy-tWI"/>
                         <outlet property="mainActivityIndicator" destination="YbC-fL-d6X" id="bhX-e8-sB2"/>
                         <outlet property="mapView" destination="rdu-cQ-ONZ" id="o5a-KL-Ual"/>
-                        <outlet property="numberOfSuitsAvailable" destination="0Ho-Z4-vrP" id="lZj-4H-kkc"/>
-                        <outlet property="stars" destination="oXi-rq-LDH" id="xPO-Xc-6US"/>
+                        <outlet property="numberOfSuitsAvailableLabel" destination="0Ho-Z4-vrP" id="lZj-4H-kkc"/>
+                        <outlet property="starsLabel" destination="oXi-rq-LDH" id="xPO-Xc-6US"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jk5-I3-ZSv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
