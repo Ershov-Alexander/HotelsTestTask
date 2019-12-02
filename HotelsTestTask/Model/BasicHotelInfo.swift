@@ -13,14 +13,19 @@ import Foundation
 struct BasicHotelInfo {
     /// Hotel id
     let id: Int
+
     /// Hotel name
     let name: String
+
     /// Hotel address
     let address: String
+
     /// Number of stars
     let stars: Double
+
     /// Distance to the centre of a city
     let distance: Double
+
     /// Numbers of available suites
     let suitesAvailability: [Int]
 }
@@ -49,23 +54,31 @@ extension BasicHotelInfo: Decodable {
                     if let suiteNumber = Int($0) {
                         return suiteNumber
                     } else {
-                        throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: [CodingKeys.suitesAvailability], debugDescription: "\(CodingKeys.suitesAvailability) must be list of integers separated by ':'"))
+                        let errorContext = DecodingError.Context(
+                                codingPath: [CodingKeys.suitesAvailability],
+                                debugDescription: "\(CodingKeys.suitesAvailability) must be list of integers separated by ':'"
+                        )
+                        throw DecodingError.dataCorrupted(errorContext)
                     }
                 }
         // make sure that strings are not empty
         for (property, key) in [(name, CodingKeys.name), (address, CodingKeys.address)] {
             if property.isEmpty {
-                throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: [key], debugDescription: "\(key) must be non empty"))
+                let errorContext = DecodingError.Context(
+                        codingPath: [key],
+                        debugDescription: "\(key) must be non empty"
+                )
+                throw DecodingError.dataCorrupted(errorContext)
             }
         }
     }
 
     private enum CodingKeys: String, CodingKey {
-        case id = "id"
-        case name = "name"
-        case address = "address"
-        case stars = "stars"
-        case distance = "distance"
+        case id
+        case name
+        case address
+        case stars
+        case distance
         case suitesAvailability = "suites_availability"
     }
 }

@@ -12,20 +12,28 @@ import Foundation
 struct FullHotelInfo {
     /// Hotel id
     let id: Int
+
     /// Hotel name
     let name: String
+
     /// Hotel address
     let address: String
+
     /// Number of stars
     let stars: Double
+
     /// Distance to the centre of a city
     let distance: Double
+
     /// Image id
     let image: Int
+
     /// Numbers of available suites
     let suitesAvailability: [Int]
+
     /// Latitude of hotel location
     let latitude: Double
+
     /// Longitude of hotel location
     let longitude: Double
 }
@@ -55,7 +63,11 @@ extension FullHotelInfo: Decodable {
         if imageStr.hasSuffix(".jpg"), let imageId = Int(imageStr.components(separatedBy: ".jpg")[0]) {
             image = imageId
         } else {
-            throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: [CodingKeys.image], debugDescription: "Image must be in format 'integer_id.jpg'"))
+            let errorContext = DecodingError.Context(
+                    codingPath: [CodingKeys.image],
+                    debugDescription: "Image must be in format 'integer_id.jpg'"
+            )
+            throw DecodingError.dataCorrupted(errorContext)
         }
         suitesAvailability = try container.decode(String.self, forKey: .suitesAvailability)
                 .split(separator: ":")
@@ -63,7 +75,11 @@ extension FullHotelInfo: Decodable {
                     if let suiteNumber = Int($0) {
                         return suiteNumber
                     } else {
-                        throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: [CodingKeys.suitesAvailability], debugDescription: "\(CodingKeys.suitesAvailability) must be list of integers separated by ':'"))
+                        let errorContext = DecodingError.Context(
+                                codingPath: [CodingKeys.suitesAvailability],
+                                debugDescription: "\(CodingKeys.suitesAvailability) must be list of integers separated by ':'"
+                        )
+                        throw DecodingError.dataCorrupted(errorContext)
                     }
                 }
         latitude = try container.decode(Double.self, forKey: .latitude)
@@ -71,18 +87,22 @@ extension FullHotelInfo: Decodable {
         // make sure that all strings are not empty
         for (property, key) in [(name, CodingKeys.name), (address, CodingKeys.address)] {
             if property.isEmpty {
-                throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: [key], debugDescription: "\(key) must be non empty"))
+                let errorContext = DecodingError.Context(
+                        codingPath: [key],
+                        debugDescription: "\(key) must be non empty"
+                )
+                throw DecodingError.dataCorrupted(errorContext)
             }
         }
     }
 
     private enum CodingKeys: String, CodingKey {
-        case id = "id"
-        case name = "name"
-        case address = "address"
-        case stars = "stars"
-        case distance = "distance"
-        case image = "image"
+        case id
+        case name
+        case address
+        case stars
+        case distance
+        case image
         case suitesAvailability = "suites_availability"
         case latitude = "lat"
         case longitude = "lon"
