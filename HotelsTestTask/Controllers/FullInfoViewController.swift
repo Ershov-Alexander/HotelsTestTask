@@ -104,7 +104,8 @@ class FullInfoViewController: UIViewController {
         distanceToTheCentreLabel.isHidden = false
 
         let location = CLLocation(latitude: hotelInfo.latitude, longitude: hotelInfo.longitude)
-        mapView.setRegion(MKCoordinateRegion(center: location.coordinate, latitudinalMeters: mapScale, longitudinalMeters: mapScale), animated: true)
+        let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: mapScale, longitudinalMeters: mapScale)
+        mapView.setRegion(region, animated: true)
         mapView.isHidden = false
     }
     
