@@ -14,58 +14,65 @@ import Alamofire
 /// Makes requests for getting hotel data
 class NetworkHandler {
     // MARK: - Variables
-    private var request: DataRequest?
-    
+    private var dataRequest: DataRequest?
+    private var downloadRequest: DownloadRequest?
+
     // MARK: - Public API
     /// Makes request for getting basic hotel info
     /// - Parameter completionHandler: Invokes when request completed. Takes two optionals: error description and data in `[BasicHotelInfo]` format. Only one optional is defined.
     func makeRequestForBasicInfo(completionHandler: @escaping (String?, [BasicHotelInfo]?) -> Void) {
-        makeRequest(for: .basicHotels, decoder: decodeJson, completionHandler: completionHandler)
+        makeRequestForDecodable(for: .basicHotels, completionHandler: completionHandler)
     }
-    
+
     /// Makes request for full hotel info
     /// - Parameters:
     ///   - id: Hotel id
     ///   - completionHandler: Invokes when request completed. Takes two optionals: error description and data in `FullHotelInfo` format. Only one optional is defined.
     func makeRequestForFullInfo(with id: Int, completionHandler: @escaping (String?, FullHotelInfo?) -> Void) {
-        makeRequest(for: .fullHotelInfo(id: id), decoder: decodeJson, completionHandler: completionHandler)
+        makeRequestForDecodable(for: .fullHotelInfo(id: id), completionHandler: completionHandler)
     }
-    
+
     /// Makes request for hotel image
     /// - Parameters:
     ///   - id: Image id
     ///   - completionHandler: Invokes when request completed. Takes two optionals: error description and data in `UIImage` format. Only one optional is defined.
     func makeRequestForImage(with id: Int, completionHandler: @escaping (String?, UIImage?) -> Void) {
-        makeRequest(for: .image(id: id), decoder: { UIImage(data: $0) }, completionHandler: completionHandler)
-    }
-    
-    /// Cancels request if it's in progress
-    func cancelRequest() {
-        request?.cancel()
-    }
-    
-    // MARK: - Utility functions
-    private func makeRequest<T>(for endPoint: HotelEndPoints, decoder: @escaping (Data) -> T?, completionHandler: @escaping (String?, T?) -> Void) {
-        request?.cancel()
-        request = Alamofire.request(endPoint.url)
-        request?.responseData { response in
+        downloadRequest?.cancel()
+        downloadRequest = AF.download(HotelEndPoints.image(id: id).url).validate()
+        downloadRequest?.responseData { response in
             switch response.result {
             case .failure(let error):
                 completionHandler(error.localizedDescription, nil)
             case .success(let data):
-                if let decodedData = decoder(data) {
-                    completionHandler(nil, decodedData)
+                if let image = UIImage(data: data) {
+                    completionHandler(nil, image)
                 } else {
-                    completionHandler("Server sent incorrect data", nil)
+                    completionHandler("Server sent data that is not an image", nil)
                 }
             }
         }
     }
-    
-    private func decodeJson<T: Decodable>(_ data: Data) -> T? {
-        try? JSONDecoder().decode(T.self, from: data)
+
+    /// Cancels request if it's in progress
+    func cancelRequest() {
+        dataRequest?.cancel()
+        downloadRequest?.cancel()
     }
-    
+
+    // MARK: - Utility functions
+    private func makeRequestForDecodable<T: Decodable>(for endPoint: HotelEndPoints, completionHandler: @escaping (String?, T?) -> Void) {
+        dataRequest?.cancel()
+        dataRequest = AF.request(endPoint.url).validate()
+        dataRequest?.responseDecodable(of: T.self) { response in
+            switch response.result {
+            case .failure(let error):
+                completionHandler(error.localizedDescription, nil)
+            case .success(let data):
+                completionHandler(nil, data)
+            }
+        }
+    }
+
     // MARK: - API end points
     /// API end points
     private enum HotelEndPoints {
