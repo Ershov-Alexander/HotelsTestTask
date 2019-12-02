@@ -9,18 +9,18 @@
 import UIKit
 
 class BasicHotelInfoTableViewCell: UITableViewCell {
-    @IBOutlet weak var numberOfStars: UILabel!
-    @IBOutlet weak var hotelName: UILabel!
-    @IBOutlet weak var numberOfSuitsAvailable: UILabel!
-    @IBOutlet weak var hotelAddress: UILabel!
-    @IBOutlet weak var distanceToTheCentre: UILabel!
+    @IBOutlet private weak var numberOfStarsLabel: UILabel!
+    @IBOutlet private weak var hotelNameLabel: UILabel!
+    @IBOutlet private weak var numberOfSuitsAvailableLabel: UILabel!
+    @IBOutlet private weak var hotelAddressLabel: UILabel!
+    @IBOutlet private weak var distanceToTheCentreLabel: UILabel!
 
     func fillUI(with hotelInfo: BasicHotelInfo) {
-        numberOfStars.text = String.init(repeating: "⭐️", count: Int(hotelInfo.stars))
-        hotelName.text = hotelInfo.name
-        numberOfSuitsAvailable.text = "🛏 \(hotelInfo.suitesAvailability.count) suits available"
-        hotelAddress.text = hotelInfo.address
-        distanceToTheCentre.text = "🏃‍️ Distance to the centre: \(hotelInfo.distance)"
+        numberOfStarsLabel.text = String.init(repeating: "⭐️", count: Int(hotelInfo.stars))
+        hotelNameLabel.text = hotelInfo.name
+        numberOfSuitsAvailableLabel.text = "🛏 \(hotelInfo.suitesAvailability.count) suits available"
+        hotelAddressLabel.text = hotelInfo.address
+        distanceToTheCentreLabel.text = "🏃‍️ Distance to the centre: \(hotelInfo.distance)"
     }
 }
 
