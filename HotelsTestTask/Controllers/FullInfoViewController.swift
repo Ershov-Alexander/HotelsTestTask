@@ -12,18 +12,19 @@ import MapKit
 /// Shows full info with an image for specific hotel.
 class FullInfoViewController: UIViewController {
     // MARK: - Variables and constants
+    private let mapScale: CLLocationDistance = 1000
     private let networkHandler = NetworkHandler()
     var basicHotelInfo: BasicHotelInfo?
 
     // MARK: - IBOutlets
-    @IBOutlet weak var stars: UILabel!
-    @IBOutlet weak var hotelImage: UIImageView!
-    @IBOutlet weak var numberOfSuitsAvailable: UILabel!
-    @IBOutlet weak var address: UILabel!
-    @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var distanceToTheCentre: UILabel!
-    @IBOutlet weak var imageActivityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var mainActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var starsLabel: UILabel!
+    @IBOutlet private weak var hotelImageView: UIImageView!
+    @IBOutlet private weak var numberOfSuitsAvailableLabel: UILabel!
+    @IBOutlet private weak var addressLabel: UILabel!
+    @IBOutlet private weak var mapView: MKMapView!
+    @IBOutlet private weak var distanceToTheCentreLabel: UILabel!
+    @IBOutlet private weak var imageActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var mainActivityIndicator: UIActivityIndicatorView!
 
     // MARK: - View controller life cycle
     override func viewDidLoad() {
@@ -32,15 +33,17 @@ class FullInfoViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         makeRequestForFullInfo()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         networkHandler.cancelRequest()
     }
 
     // MARK: - Network requests
-    func makeRequestForFullInfo() {
+    private func makeRequestForFullInfo() {
         mainActivityIndicator.startAnimating()
         if let id = basicHotelInfo?.id {
             networkHandler.makeRequestForFullInfo(with: id) { [weak self] error, data in
@@ -61,7 +64,7 @@ class FullInfoViewController: UIViewController {
         }
     }
 
-    func makeRequestForImage(with id: Int) {
+    private func makeRequestForImage(with id: Int) {
         imageActivityIndicator.startAnimating()
         networkHandler.makeRequestForImage(with: id) { [weak self] error, data in
             guard let self = self else {
@@ -72,42 +75,52 @@ class FullInfoViewController: UIViewController {
                 if let error = error {
                     self.showErrorAlert(with: error)
                 } else if let data = data {
-                    let rectToCrop = CGRect(
-                            origin: CGPoint(x: 1, y: 1),
-                            size: CGSize(width: data.size.width - 2, height: data.size.height - 2)
-                    )
-                    let croppedImage = data.cgImage?.cropping(to: rectToCrop).map { UIImage(cgImage: $0) }
-                    self.hotelImage.image = croppedImage
-                    self.hotelImage.isHidden = false
+                    self.updateImageView(with: data)
                 }
             }
         }
     }
 
     // MARK: - UI functions
-    func hideViews() {
-        stars.isHidden = true
-        numberOfSuitsAvailable.isHidden = true
-        address.isHidden = true
+    private func hideViews() {
+        starsLabel.isHidden = true
+        numberOfSuitsAvailableLabel.isHidden = true
+        addressLabel.isHidden = true
         mapView.isHidden = true
-        distanceToTheCentre.isHidden = true
+        distanceToTheCentreLabel.isHidden = true
     }
 
-    func fillUI(with hotelInfo: FullHotelInfo) {
-        stars.text = String(repeating: "⭐️", count: Int(hotelInfo.stars))
-        stars.isHidden = false
-        numberOfSuitsAvailable.text = "🛏 \(hotelInfo.suitesAvailability.count) suits available"
-        numberOfSuitsAvailable.isHidden = false
-        address.text = hotelInfo.address
-        address.isHidden = false
-        distanceToTheCentre.text = "🏃‍️ Distance to the centre: \(hotelInfo.distance)"
-        distanceToTheCentre.isHidden = false
+    private func fillUI(with hotelInfo: FullHotelInfo) {
+        starsLabel.text = String(repeating: "⭐️", count: Int(hotelInfo.stars))
+        starsLabel.isHidden = false
+
+        numberOfSuitsAvailableLabel.text = "🛏 \(hotelInfo.suitesAvailability.count) suits available"
+        numberOfSuitsAvailableLabel.isHidden = false
+
+        addressLabel.text = hotelInfo.address
+        addressLabel.isHidden = false
+
+        distanceToTheCentreLabel.text = "🏃‍️ Distance to the centre: \(hotelInfo.distance)"
+        distanceToTheCentreLabel.isHidden = false
+
         let location = CLLocation(latitude: hotelInfo.latitude, longitude: hotelInfo.longitude)
-        mapView.setRegion(MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000), animated: true)
+        mapView.setRegion(MKCoordinateRegion(center: location.coordinate, latitudinalMeters: mapScale, longitudinalMeters: mapScale), animated: true)
         mapView.isHidden = false
     }
+    
+    private func updateImageView(with image: UIImage) {
+        let rectToCrop = CGRect(
+                origin: CGPoint(x: 1, y: 1),
+                size: CGSize(width: image.size.width - 2, height: image.size.height - 2)
+        )
+        if let croppedCGImage = image.cgImage?.cropping(to: rectToCrop) {
+            let uiImage = UIImage(cgImage: croppedCGImage)
+            hotelImageView.image = uiImage
+            hotelImageView.isHidden = false
+        }
+    }
 
-    func showErrorAlert(with message: String) {
+    private func showErrorAlert(with message: String) {
         let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "Ok", style: .default)
         alertController.addAction(action)
