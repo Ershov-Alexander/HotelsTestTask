@@ -20,7 +20,7 @@ class BasicHotelInfoTableViewCell: UITableViewCell {
         hotelName.text = hotelInfo.name
         numberOfSuitsAvailable.text = "🛏 \(hotelInfo.suitesAvailability.count) suits available"
         hotelAddress.text = hotelInfo.address
-        distanceToTheCentre.text = "🏃‍♂️ Distance to the centre: \(hotelInfo.distance)"
+        distanceToTheCentre.text = "🏃‍️ Distance to the centre: \(hotelInfo.distance)"
     }
 }
 
