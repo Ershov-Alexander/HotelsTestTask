@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8qa-xH-ICk">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Hotels-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="BasicInfoViewController" customModule="HotelsTestTask" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Prx-22-z8j">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BasicHotelInfoCell" rowHeight="163" id="sLv-mm-PJD" customClass="BasicHotelInfoTableViewCell" customModule="HotelsTestTask" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="163"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sLv-mm-PJD" id="2dx-ZW-w0h">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="163"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⭐️⭐️⭐️⭐️⭐️" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uJc-ew-fZz">
+                                                    <rect key="frame" x="144.5" y="11" width="125" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="32" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GYB-wu-hTl">
+                                                    <rect key="frame" x="20" y="50.5" width="374" height="101.5"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacingType="standard" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t8L-ev-8AT">
+                                                            <rect key="frame" x="0.0" y="0.0" width="193.5" height="54"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Belleclaire Hotel" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0z8-1Y-BPg">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="193.5" height="33.5"/>
+                                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🛏 5 suits available" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8eQ-KB-61d">
+                                                                    <rect key="frame" x="0.0" y="36" width="134" height="18"/>
+                                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacingType="standard" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ohQ-Hp-Djh">
+                                                            <rect key="frame" x="0.0" y="70" width="201.5" height="31.5"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="250 West 77th Street, Manhattan" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PqK-dI-c4M">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="201.5" height="16"/>
+                                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🏃‍♂️ Distance from the centre: 100" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RgO-Hj-ETM">
+                                                                    <rect key="frame" x="0.0" y="17" width="188.5" height="14.5"/>
+                                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="GYB-wu-hTl" secondAttribute="bottom" id="XFa-Xl-VYU"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="GYB-wu-hTl" secondAttribute="trailing" id="oLa-1z-4Kj"/>
+                                                <constraint firstItem="uJc-ew-fZz" firstAttribute="centerX" secondItem="2dx-ZW-w0h" secondAttribute="centerX" id="pEX-vs-bwB"/>
+                                                <constraint firstItem="GYB-wu-hTl" firstAttribute="top" secondItem="uJc-ew-fZz" secondAttribute="bottom" constant="15.5" id="tFr-17-mfV"/>
+                                                <constraint firstItem="GYB-wu-hTl" firstAttribute="leading" secondItem="2dx-ZW-w0h" secondAttribute="leadingMargin" id="yIm-YK-GWK"/>
+                                                <constraint firstItem="uJc-ew-fZz" firstAttribute="top" secondItem="2dx-ZW-w0h" secondAttribute="topMargin" id="zVK-oP-LkX"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="distanceToTheCentre" destination="RgO-Hj-ETM" id="YOJ-qp-uo0"/>
+                                            <outlet property="hotelAddress" destination="PqK-dI-c4M" id="4WK-cH-NFI"/>
+                                            <outlet property="hotelName" destination="0z8-1Y-BPg" id="PZf-9M-UR5"/>
+                                            <outlet property="numberOfStars" destination="uJc-ew-fZz" id="7zF-lh-uqS"/>
+                                            <outlet property="numberOfSuitsAvailable" destination="8eQ-KB-61d" id="Heb-RF-Vcr"/>
+                                            <segue destination="B9C-96-aHE" kind="show" id="AyP-SP-3tE"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="IjE-mm-VDh">
+                                <rect key="frame" x="188.5" y="456.5" width="37" height="37"/>
+                                <color key="color" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="IjE-mm-VDh" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="HDx-Mx-IoO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Prx-22-z8j" secondAttribute="trailing" id="KUg-7b-Z7h"/>
+                            <constraint firstAttribute="bottom" secondItem="Prx-22-z8j" secondAttribute="bottom" id="LVE-E2-FBV"/>
+                            <constraint firstItem="Prx-22-z8j" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dJn-CL-VdR"/>
+                            <constraint firstItem="Prx-22-z8j" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="i6u-Vt-vdI"/>
+                            <constraint firstItem="IjE-mm-VDh" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="iCY-d4-0nU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Hotels" id="Xum-Ys-c0m">
+                        <rightBarButtonItems>
+                            <barButtonItem title="🛏" id="vEb-Pw-QDg">
+                                <connections>
+                                    <action selector="sortByNumberOfAvailableSuits:" destination="BYZ-38-t0r" id="m16-Gb-RBu"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="🏃‍♂️" id="i1n-zi-xHg">
+                                <connections>
+                                    <action selector="sortByDistanceToTheCentre:" destination="BYZ-38-t0r" id="tIk-zh-Lno"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="activityIndicator" destination="IjE-mm-VDh" id="jUg-GI-6wg"/>
+                        <outlet property="tableView" destination="Prx-22-z8j" id="c6x-qp-QMG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1047.8260869565217" y="99.776785714285708"/>
+        </scene>
+        <!--Belleclaire Hotel-->
+        <scene sceneID="Ab7-cL-eX6">
+            <objects>
+                <viewController id="B9C-96-aHE" customClass="FullInfoViewController" customModule="HotelsTestTask" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MNp-kA-Fas">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FGa-9b-w8x">
+                                <rect key="frame" x="0.0" y="140" width="414" height="722"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="vGC-Ge-X69">
+                                        <rect key="frame" x="16" y="0.0" width="382" height="486"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ukP-oM-dW8">
+                                                <rect key="frame" x="0.0" y="0.0" width="382" height="255.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⭐️⭐️⭐️⭐️⭐️" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oXi-rq-LDH">
+                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="24"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HMB-kz-3YE">
+                                                        <rect key="frame" x="0.0" y="35" width="382" height="200"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="200" id="APw-Wm-7yb"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 suits available" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ho-Z4-vrP">
+                                                        <rect key="frame" x="0.0" y="235" width="382" height="20.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Yd-WS-7R8">
+                                                <rect key="frame" x="0.0" y="287.5" width="382" height="198.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="250 West 77th Street, Manhattan&quot;" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uGy-ih-Zet">
+                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="19.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rdu-cQ-ONZ">
+                                                        <rect key="frame" x="0.0" y="27" width="382" height="150"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="150" id="Wpy-NV-OYu"/>
+                                                        </constraints>
+                                                    </mapView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance from the centre: 100" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N4F-vC-L9t">
+                                                        <rect key="frame" x="0.0" y="184" width="382" height="14.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="6B3-kd-ID7">
+                                        <rect key="frame" x="197" y="125" width="20" height="20"/>
+                                        <color key="color" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </activityIndicatorView>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="YbC-fL-d6X">
+                                        <rect key="frame" x="188.5" y="342.5" width="37" height="37"/>
+                                        <color key="color" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="vGC-Ge-X69" secondAttribute="bottom" id="O5y-7e-IF9"/>
+                                    <constraint firstItem="YbC-fL-d6X" firstAttribute="centerX" secondItem="FGa-9b-w8x" secondAttribute="centerX" id="Osv-84-EPi"/>
+                                    <constraint firstAttribute="trailing" secondItem="vGC-Ge-X69" secondAttribute="trailing" constant="-16" id="RBA-cf-BVQ"/>
+                                    <constraint firstItem="vGC-Ge-X69" firstAttribute="width" secondItem="FGa-9b-w8x" secondAttribute="width" constant="-32" id="WSD-tV-hxp"/>
+                                    <constraint firstItem="vGC-Ge-X69" firstAttribute="leading" secondItem="FGa-9b-w8x" secondAttribute="leading" constant="16" id="ery-cF-XRG"/>
+                                    <constraint firstItem="YbC-fL-d6X" firstAttribute="centerY" secondItem="FGa-9b-w8x" secondAttribute="centerY" id="p1I-TI-5kN"/>
+                                    <constraint firstItem="vGC-Ge-X69" firstAttribute="top" secondItem="FGa-9b-w8x" secondAttribute="top" id="qmm-GW-8uY"/>
+                                    <constraint firstItem="6B3-kd-ID7" firstAttribute="centerX" secondItem="HMB-kz-3YE" secondAttribute="centerX" id="xkE-1Q-OJM"/>
+                                    <constraint firstItem="6B3-kd-ID7" firstAttribute="centerY" secondItem="HMB-kz-3YE" secondAttribute="centerY" id="z93-Ua-dOy"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="Zcf-Yr-4LX"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="aWO-HD-NvZ"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="QVA-WX-F6s" firstAttribute="bottom" secondItem="FGa-9b-w8x" secondAttribute="bottom" id="4q9-oe-xRH"/>
+                            <constraint firstItem="FGa-9b-w8x" firstAttribute="top" secondItem="QVA-WX-F6s" secondAttribute="top" id="5g4-xK-iK2"/>
+                            <constraint firstItem="QVA-WX-F6s" firstAttribute="trailing" secondItem="FGa-9b-w8x" secondAttribute="trailing" id="Lvd-g3-0nj"/>
+                            <constraint firstItem="FGa-9b-w8x" firstAttribute="leading" secondItem="QVA-WX-F6s" secondAttribute="leading" id="log-dv-3tY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="QVA-WX-F6s"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Belleclaire Hotel" id="nuM-te-wRB"/>
+                    <connections>
+                        <outlet property="address" destination="uGy-ih-Zet" id="HjR-F5-xJN"/>
+                        <outlet property="distanceToTheCentre" destination="N4F-vC-L9t" id="92P-5H-die"/>
+                        <outlet property="hotelImage" destination="HMB-kz-3YE" id="gDe-j4-C49"/>
+                        <outlet property="imageActivityIndicator" destination="6B3-kd-ID7" id="Xpr-uy-tWI"/>
+                        <outlet property="mainActivityIndicator" destination="YbC-fL-d6X" id="bhX-e8-sB2"/>
+                        <outlet property="mapView" destination="rdu-cQ-ONZ" id="o5a-KL-Ual"/>
+                        <outlet property="numberOfSuitsAvailable" destination="0Ho-Z4-vrP" id="lZj-4H-kkc"/>
+                        <outlet property="stars" destination="oXi-rq-LDH" id="xPO-Xc-6US"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jk5-I3-ZSv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1778.2608695652175" y="106.47321428571428"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="dfu-57-LM0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8qa-xH-ICk" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="2YJ-vt-M24">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="0ws-zd-W5S"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W8A-m0-Evn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="99.776785714285708"/>
+        </scene>
+    </scenes>
+</document>

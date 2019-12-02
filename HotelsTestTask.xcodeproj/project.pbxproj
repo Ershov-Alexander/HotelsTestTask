@@ -3,17 +3,23 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		04DADF9F2392575E004F4E8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DADF9E2392575E004F4E8D /* AppDelegate.swift */; };
 		04DADFA12392575E004F4E8D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DADFA02392575E004F4E8D /* SceneDelegate.swift */; };
-		04DADFA32392575E004F4E8D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DADFA22392575E004F4E8D /* ViewController.swift */; };
+		04DADFA32392575E004F4E8D /* BasicInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DADFA22392575E004F4E8D /* BasicInfoViewController.swift */; };
 		04DADFA62392575E004F4E8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04DADFA42392575E004F4E8D /* Main.storyboard */; };
 		04DADFA823925760004F4E8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04DADFA723925760004F4E8D /* Assets.xcassets */; };
 		04DADFAB23925760004F4E8D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04DADFA923925760004F4E8D /* LaunchScreen.storyboard */; };
 		04DADFB623925760004F4E8D /* HotelsTestTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DADFB523925760004F4E8D /* HotelsTestTaskTests.swift */; };
+		04DADFC1239258A9004F4E8D /* FullHotelInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DADFC0239258A9004F4E8D /* FullHotelInfo.swift */; };
+		04DADFCC23926F9C004F4E8D /* BasicHotelInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DADFCB23926F9C004F4E8D /* BasicHotelInfo.swift */; };
+		04DADFD023928A02004F4E8D /* BasicHotelInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DADFCF23928A02004F4E8D /* BasicHotelInfoTableViewCell.swift */; };
+		04E3829D2393C4E2003EB34B /* NetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E3829C2393C4E2003EB34B /* NetworkHandler.swift */; };
+		04E940432395038400EDEF2C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 04E940422395038400EDEF2C /* Alamofire */; };
+		04F4AD8D2393A72E00B7F82B /* FullInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F4AD8C2393A72E00B7F82B /* FullInfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +36,7 @@
 		04DADF9B2392575E004F4E8D /* HotelsTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HotelsTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04DADF9E2392575E004F4E8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04DADFA02392575E004F4E8D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		04DADFA22392575E004F4E8D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		04DADFA22392575E004F4E8D /* BasicInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoViewController.swift; sourceTree = "<group>"; };
 		04DADFA52392575E004F4E8D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04DADFA723925760004F4E8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04DADFAA23925760004F4E8D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -38,6 +44,11 @@
 		04DADFB123925760004F4E8D /* HotelsTestTaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HotelsTestTaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04DADFB523925760004F4E8D /* HotelsTestTaskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelsTestTaskTests.swift; sourceTree = "<group>"; };
 		04DADFB723925760004F4E8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04DADFC0239258A9004F4E8D /* FullHotelInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullHotelInfo.swift; sourceTree = "<group>"; };
+		04DADFCB23926F9C004F4E8D /* BasicHotelInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicHotelInfo.swift; sourceTree = "<group>"; };
+		04DADFCF23928A02004F4E8D /* BasicHotelInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicHotelInfoTableViewCell.swift; sourceTree = "<group>"; };
+		04E3829C2393C4E2003EB34B /* NetworkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHandler.swift; sourceTree = "<group>"; };
+		04F4AD8C2393A72E00B7F82B /* FullInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullInfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04E940432395038400EDEF2C /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +70,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0499768C23943878008C6B3F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				04DADFA22392575E004F4E8D /* BasicInfoViewController.swift */,
+				04F4AD8C2393A72E00B7F82B /* FullInfoViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		04DADF922392575E004F4E8D = {
 			isa = PBXGroup;
 			children = (
@@ -79,13 +100,14 @@
 		04DADF9D2392575E004F4E8D /* HotelsTestTask */ = {
 			isa = PBXGroup;
 			children = (
-				04DADF9E2392575E004F4E8D /* AppDelegate.swift */,
-				04DADFA02392575E004F4E8D /* SceneDelegate.swift */,
-				04DADFA22392575E004F4E8D /* ViewController.swift */,
-				04DADFA42392575E004F4E8D /* Main.storyboard */,
+				04E9401E2394F3CF00EDEF2C /* Supporting files */,
+				0499768C23943878008C6B3F /* Controllers */,
+				04E9401F2394F3FF00EDEF2C /* Storyboards */,
 				04DADFA723925760004F4E8D /* Assets.xcassets */,
-				04DADFA923925760004F4E8D /* LaunchScreen.storyboard */,
 				04DADFAC23925760004F4E8D /* Info.plist */,
+				04E3829E23941777003EB34B /* Model */,
+				04E940202394F44100EDEF2C /* Views */,
+				04E940212394F44700EDEF2C /* Utils */,
 			);
 			path = HotelsTestTask;
 			sourceTree = "<group>";
@@ -97,6 +119,49 @@
 				04DADFB723925760004F4E8D /* Info.plist */,
 			);
 			path = HotelsTestTaskTests;
+			sourceTree = "<group>";
+		};
+		04E3829E23941777003EB34B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				04DADFCB23926F9C004F4E8D /* BasicHotelInfo.swift */,
+				04DADFC0239258A9004F4E8D /* FullHotelInfo.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		04E9401E2394F3CF00EDEF2C /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				04DADF9E2392575E004F4E8D /* AppDelegate.swift */,
+				04DADFA02392575E004F4E8D /* SceneDelegate.swift */,
+			);
+			path = "Supporting files";
+			sourceTree = "<group>";
+		};
+		04E9401F2394F3FF00EDEF2C /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				04DADFA923925760004F4E8D /* LaunchScreen.storyboard */,
+				04DADFA42392575E004F4E8D /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		04E940202394F44100EDEF2C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				04DADFCF23928A02004F4E8D /* BasicHotelInfoTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		04E940212394F44700EDEF2C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				04E3829C2393C4E2003EB34B /* NetworkHandler.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -115,6 +180,9 @@
 			dependencies = (
 			);
 			name = HotelsTestTask;
+			packageProductDependencies = (
+				04E940422395038400EDEF2C /* Alamofire */,
+			);
 			productName = HotelsTestTask;
 			productReference = 04DADF9B2392575E004F4E8D /* HotelsTestTask.app */;
 			productType = "com.apple.product-type.application";
@@ -165,6 +233,9 @@
 				Base,
 			);
 			mainGroup = 04DADF922392575E004F4E8D;
+			packageReferences = (
+				04E940412395038400EDEF2C /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 04DADF9C2392575E004F4E8D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -200,9 +271,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04DADFA32392575E004F4E8D /* ViewController.swift in Sources */,
+				04DADFA32392575E004F4E8D /* BasicInfoViewController.swift in Sources */,
 				04DADF9F2392575E004F4E8D /* AppDelegate.swift in Sources */,
+				04E3829D2393C4E2003EB34B /* NetworkHandler.swift in Sources */,
+				04DADFC1239258A9004F4E8D /* FullHotelInfo.swift in Sources */,
 				04DADFA12392575E004F4E8D /* SceneDelegate.swift in Sources */,
+				04DADFCC23926F9C004F4E8D /* BasicHotelInfo.swift in Sources */,
+				04DADFD023928A02004F4E8D /* BasicHotelInfoTableViewCell.swift in Sources */,
+				04F4AD8D2393A72E00B7F82B /* FullInfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,6 +441,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U6FFL765V4;
 				INFOPLIST_FILE = HotelsTestTask/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -383,6 +460,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U6FFL765V4;
 				INFOPLIST_FILE = HotelsTestTask/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -469,6 +547,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		04E940412395038400EDEF2C /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = exactVersion;
+				version = "5.0.0-rc.3";
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		04E940422395038400EDEF2C /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04E940412395038400EDEF2C /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 04DADF932392575E004F4E8D /* Project object */;
 }
