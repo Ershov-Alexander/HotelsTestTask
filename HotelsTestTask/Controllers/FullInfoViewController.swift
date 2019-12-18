@@ -30,6 +30,9 @@ class FullInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         hideViews()
+        if let hotelInfo = basicHotelInfo {
+            fillUI(with: hotelInfo)
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -90,19 +93,21 @@ class FullInfoViewController: UIViewController {
         distanceToTheCentreLabel.isHidden = true
     }
 
-    private func fillUI(with hotelInfo: FullHotelInfo) {
-        starsLabel.text = String(repeating: "⭐️", count: Int(hotelInfo.basicHotelInfo.stars))
+    private func fillUI(with hotelInfo: BasicHotelInfo) {
+        starsLabel.text = String(repeating: "⭐️", count: Int(hotelInfo.stars))
         starsLabel.isHidden = false
 
-        numberOfSuitsAvailableLabel.text = "🛏 \(hotelInfo.basicHotelInfo.suitesAvailability.count) suits available"
+        numberOfSuitsAvailableLabel.text = "🛏 \(hotelInfo.suitesAvailability.count) suits available"
         numberOfSuitsAvailableLabel.isHidden = false
 
-        addressLabel.text = hotelInfo.basicHotelInfo.address
+        addressLabel.text = hotelInfo.address
         addressLabel.isHidden = false
 
-        distanceToTheCentreLabel.text = "🏃‍️ Distance to the centre: \(hotelInfo.basicHotelInfo.distance)"
+        distanceToTheCentreLabel.text = "🏃‍️ Distance to the centre: \(hotelInfo.distance)"
         distanceToTheCentreLabel.isHidden = false
-
+    }
+    
+    private func fillUI(with hotelInfo: FullHotelInfo) {
         let location = CLLocation(latitude: hotelInfo.latitude, longitude: hotelInfo.longitude)
         let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: mapScale, longitudinalMeters: mapScale)
         mapView.setRegion(region, animated: true)

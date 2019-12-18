@@ -57,7 +57,7 @@ class BasicInfoViewController: UIViewController {
            let index = tableView.indexPath(for: cell),
            let vc = segue.destination as? FullInfoViewController {
             vc.basicHotelInfo = tableData[index.row]
-            vc.navigationItem.title = tableData[index.row].name
+            vc.navigationItem.title = vc.basicHotelInfo?.name
         }
     }
 
