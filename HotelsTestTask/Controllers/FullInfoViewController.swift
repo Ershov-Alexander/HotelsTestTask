@@ -91,16 +91,16 @@ class FullInfoViewController: UIViewController {
     }
 
     private func fillUI(with hotelInfo: FullHotelInfo) {
-        starsLabel.text = String(repeating: "⭐️", count: Int(hotelInfo.stars))
+        starsLabel.text = String(repeating: "⭐️", count: Int(hotelInfo.basicHotelInfo.stars))
         starsLabel.isHidden = false
 
-        numberOfSuitsAvailableLabel.text = "🛏 \(hotelInfo.suitesAvailability.count) suits available"
+        numberOfSuitsAvailableLabel.text = "🛏 \(hotelInfo.basicHotelInfo.suitesAvailability.count) suits available"
         numberOfSuitsAvailableLabel.isHidden = false
 
-        addressLabel.text = hotelInfo.address
+        addressLabel.text = hotelInfo.basicHotelInfo.address
         addressLabel.isHidden = false
 
-        distanceToTheCentreLabel.text = "🏃‍️ Distance to the centre: \(hotelInfo.distance)"
+        distanceToTheCentreLabel.text = "🏃‍️ Distance to the centre: \(hotelInfo.basicHotelInfo.distance)"
         distanceToTheCentreLabel.isHidden = false
 
         let location = CLLocation(latitude: hotelInfo.latitude, longitude: hotelInfo.longitude)
