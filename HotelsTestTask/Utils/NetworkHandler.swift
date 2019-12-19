@@ -78,14 +78,14 @@ class NetworkHandler {
 // MARK: Supporting enums
 
 /// Errors that might occur in `NetworkHandler`
-enum NetworkHandlerError: Error {
+enum NetworkHandlerError: LocalizedError {
     case notAnImage
     case networkError(description: String)
     
-    var localizedDescription: String {
+    var errorDescription: String? {
         switch self {
         case .notAnImage:
-            return "Provided data can't be converted to UIImage"
+            return "Provided data can't be converted to an image"
         case .networkError(let description):
             return description
         }
