@@ -53,7 +53,7 @@ class BasicInfoViewController: UIViewController {
 
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let cell = sender as? BasicHotelInfoTableViewCell,
+        if let cell = sender as? BasicInfoTableViewCell,
            let index = tableView.indexPath(for: cell),
            let vc = segue.destination as? FullInfoViewController {
             vc.basicHotelInfo = tableData[index.row]
@@ -104,7 +104,7 @@ extension BasicInfoViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BasicHotelInfoCell", for: indexPath)
-        guard let basicInfoCell = cell as? BasicHotelInfoTableViewCell else {
+        guard let basicInfoCell = cell as? BasicInfoTableViewCell else {
             return cell
         }
         basicInfoCell.fillUI(with: tableData[indexPath.row])

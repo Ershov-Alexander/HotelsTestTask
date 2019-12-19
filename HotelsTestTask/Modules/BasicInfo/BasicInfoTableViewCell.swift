@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BasicHotelInfoTableViewCell: UITableViewCell {
+class BasicInfoTableViewCell: UITableViewCell {
     @IBOutlet private weak var numberOfStarsLabel: UILabel!
     @IBOutlet private weak var hotelNameLabel: UILabel!
     @IBOutlet private weak var numberOfSuitsAvailableLabel: UILabel!

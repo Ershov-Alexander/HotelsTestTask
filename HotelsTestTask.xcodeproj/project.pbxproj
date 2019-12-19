@@ -18,9 +18,8 @@
 		04DADFB623925760004F4E8D /* HotelsTestTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DADFB523925760004F4E8D /* HotelsTestTaskTests.swift */; };
 		04DADFC1239258A9004F4E8D /* FullHotelInfoProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DADFC0239258A9004F4E8D /* FullHotelInfoProtocol.swift */; };
 		04DADFCC23926F9C004F4E8D /* BasicHotelInfoProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DADFCB23926F9C004F4E8D /* BasicHotelInfoProtocol.swift */; };
-		04DADFD023928A02004F4E8D /* BasicHotelInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DADFCF23928A02004F4E8D /* BasicHotelInfoTableViewCell.swift */; };
+		04DADFD023928A02004F4E8D /* BasicInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DADFCF23928A02004F4E8D /* BasicInfoTableViewCell.swift */; };
 		04E3829D2393C4E2003EB34B /* NetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E3829C2393C4E2003EB34B /* NetworkHandler.swift */; };
-		04E940432395038400EDEF2C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 04E940422395038400EDEF2C /* Alamofire */; };
 		04F4AD8D2393A72E00B7F82B /* FullInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F4AD8C2393A72E00B7F82B /* FullInfoViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,7 +49,7 @@
 		04DADFB723925760004F4E8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04DADFC0239258A9004F4E8D /* FullHotelInfoProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullHotelInfoProtocol.swift; sourceTree = "<group>"; };
 		04DADFCB23926F9C004F4E8D /* BasicHotelInfoProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicHotelInfoProtocol.swift; sourceTree = "<group>"; };
-		04DADFCF23928A02004F4E8D /* BasicHotelInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicHotelInfoTableViewCell.swift; sourceTree = "<group>"; };
+		04DADFCF23928A02004F4E8D /* BasicInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoTableViewCell.swift; sourceTree = "<group>"; };
 		04E3829C2393C4E2003EB34B /* NetworkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHandler.swift; sourceTree = "<group>"; };
 		04F4AD8C2393A72E00B7F82B /* FullInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullInfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -60,7 +59,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04E940432395038400EDEF2C /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,27 +75,27 @@
 		0492942423ABC36A00E21EAB /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				0492942623ABC3AA00E21EAB /* FullHotelInfo */,
-				0492942523ABC39F00E21EAB /* BasicHotelInfo */,
+				0492942623ABC3AA00E21EAB /* FullInfo */,
+				0492942523ABC39F00E21EAB /* BasicInfo */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
 		};
-		0492942523ABC39F00E21EAB /* BasicHotelInfo */ = {
+		0492942523ABC39F00E21EAB /* BasicInfo */ = {
 			isa = PBXGroup;
 			children = (
-				04DADFCF23928A02004F4E8D /* BasicHotelInfoTableViewCell.swift */,
+				04DADFCF23928A02004F4E8D /* BasicInfoTableViewCell.swift */,
 				04DADFA22392575E004F4E8D /* BasicInfoViewController.swift */,
 			);
-			path = BasicHotelInfo;
+			path = BasicInfo;
 			sourceTree = "<group>";
 		};
-		0492942623ABC3AA00E21EAB /* FullHotelInfo */ = {
+		0492942623ABC3AA00E21EAB /* FullInfo */ = {
 			isa = PBXGroup;
 			children = (
 				04F4AD8C2393A72E00B7F82B /* FullInfoViewController.swift */,
 			);
-			path = FullHotelInfo;
+			path = FullInfo;
 			sourceTree = "<group>";
 		};
 		0492942723ABC8E100E21EAB /* NetworkService */ = {
@@ -203,7 +201,7 @@
 			);
 			name = HotelsTestTask;
 			packageProductDependencies = (
-				04E940422395038400EDEF2C /* Alamofire */,
+				04E940422395038400EDEF2C /* XCSwiftPackageProductDependency */,
 			);
 			productName = HotelsTestTask;
 			productReference = 04DADF9B2392575E004F4E8D /* HotelsTestTask.app */;
@@ -256,7 +254,7 @@
 			);
 			mainGroup = 04DADF922392575E004F4E8D;
 			packageReferences = (
-				04E940412395038400EDEF2C /* XCRemoteSwiftPackageReference "Alamofire" */,
+				04E940412395038400EDEF2C /* XCRemoteSwiftPackageReference */,
 			);
 			productRefGroup = 04DADF9C2392575E004F4E8D /* Products */;
 			projectDirPath = "";
@@ -301,7 +299,7 @@
 				04DADFCC23926F9C004F4E8D /* BasicHotelInfoProtocol.swift in Sources */,
 				0492942923ABC91700E21EAB /* DecodableBasicHotelInfo.swift in Sources */,
 				0492942B23ABC92600E21EAB /* DecodableFullHotelInfo.swift in Sources */,
-				04DADFD023928A02004F4E8D /* BasicHotelInfoTableViewCell.swift in Sources */,
+				04DADFD023928A02004F4E8D /* BasicInfoTableViewCell.swift in Sources */,
 				04F4AD8D2393A72E00B7F82B /* FullInfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -573,7 +571,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		04E940412395038400EDEF2C /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		04E940412395038400EDEF2C /* XCRemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
 			requirement = {
@@ -584,9 +582,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		04E940422395038400EDEF2C /* Alamofire */ = {
+		04E940422395038400EDEF2C /* XCSwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 04E940412395038400EDEF2C /* XCRemoteSwiftPackageReference "Alamofire" */;
+			package = 04E940412395038400EDEF2C /* XCRemoteSwiftPackageReference */;
 			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
