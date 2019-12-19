@@ -1,25 +1,17 @@
 //
-//  Hotels.swift
+//  DecodableFullHotelInfo.swift
 //  HotelsTestTask
 //
-//  Created by Alexander Ershov on 30.11.2019.
+//  Created by Alexander Ershov on 19.12.2019.
 //  Copyright © 2019 Alexander Ershov. All rights reserved.
 //
 
 import Foundation
 
-/// Represents full hotel information
-struct FullHotelInfo {
-    /// Basic hotel information
-    let basicHotelInfo: BasicHotelInfo
-
-    /// Image id
+struct DecodableFullHotelInfo: FullHotelInfoProtocol {
+    let basicHotelInfo: BasicHotelInfoProtocol
     let image: Int
-
-    /// Latitude of hotel location
     let latitude: Double
-
-    /// Longitude of hotel location
     let longitude: Double
 }
 
@@ -35,11 +27,11 @@ struct FullHotelInfo {
 ///    "lat": 40.78260000000000,
 ///    "lon": -73.98130000000000
 ///}
-extension FullHotelInfo: Decodable {
+extension DecodableFullHotelInfo: Decodable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        basicHotelInfo = try BasicHotelInfo(from: decoder)
+        basicHotelInfo = try DecodableBasicHotelInfo(from: decoder)
         let imageStr = try container.decode(String.self, forKey: .image)
         if imageStr.hasSuffix(".jpg"), let imageId = Int(imageStr.components(separatedBy: ".jpg")[0]) {
             image = imageId

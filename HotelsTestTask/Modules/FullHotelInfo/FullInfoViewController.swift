@@ -14,7 +14,7 @@ class FullInfoViewController: UIViewController {
     // MARK: - Variables and constants
     private let mapScale: CLLocationDistance = 1000
     private let networkHandler = NetworkHandler()
-    var basicHotelInfo: BasicHotelInfo?
+    var basicHotelInfo: BasicHotelInfoProtocol?
 
     // MARK: - IBOutlets
     @IBOutlet private weak var starsLabel: UILabel!
@@ -96,7 +96,7 @@ class FullInfoViewController: UIViewController {
         distanceToTheCentreLabel.isHidden = true
     }
 
-    private func fillUI(with hotelInfo: BasicHotelInfo) {
+    private func fillUI(with hotelInfo: BasicHotelInfoProtocol) {
         starsLabel.text = String(repeating: "⭐️", count: Int(hotelInfo.stars))
         starsLabel.isHidden = false
 
@@ -110,7 +110,7 @@ class FullInfoViewController: UIViewController {
         distanceToTheCentreLabel.isHidden = false
     }
     
-    private func fillUI(with hotelInfo: FullHotelInfo) {
+    private func fillUI(with hotelInfo: FullHotelInfoProtocol) {
         let location = CLLocation(latitude: hotelInfo.latitude, longitude: hotelInfo.longitude)
         let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: mapScale, longitudinalMeters: mapScale)
         mapView.setRegion(region, animated: true)

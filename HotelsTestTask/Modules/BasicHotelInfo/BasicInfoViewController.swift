@@ -12,7 +12,7 @@ import UIKit
 class BasicInfoViewController: UIViewController {
     // MARK: - Variables and constants
     private let networkHandler = NetworkHandler()
-    private var tableData: [BasicHotelInfo] = []
+    private var tableData: [BasicHotelInfoProtocol] = []
 
     // MARK: - IBOutlets
     @IBOutlet weak private var tableView: UITableView!

@@ -20,7 +20,7 @@ class NetworkHandler {
     // MARK: - Public API
     /// Makes request for getting basic hotel info
     /// - Parameter completionHandler: Invokes when request completed
-    func makeRequestForBasicInfo(completionHandler: @escaping (Result<[BasicHotelInfo], NetworkHandlerError>) -> Void) {
+    func makeRequestForBasicInfo(completionHandler: @escaping (Result<[DecodableBasicHotelInfo], NetworkHandlerError>) -> Void) {
         makeRequestForDecodable(for: HotelEndPoints.basicHotels.url, completionHandler: completionHandler)
     }
 
@@ -28,7 +28,7 @@ class NetworkHandler {
     /// - Parameters:
     ///   - id: Hotel id
     ///   - completionHandler: Invokes when request completed
-    func makeRequestForFullInfo(with id: Int, completionHandler: @escaping (Result<FullHotelInfo, NetworkHandlerError>) -> Void) {
+    func makeRequestForFullInfo(with id: Int, completionHandler: @escaping (Result<DecodableFullHotelInfo, NetworkHandlerError>) -> Void) {
         makeRequestForDecodable(for: HotelEndPoints.fullHotelInfo(id: id).url, completionHandler: completionHandler)
     }
 

@@ -1,32 +1,19 @@
 //
-//  HotelBasicInfo.swift
+//  DecodableBasicHotelInfo.swift
 //  HotelsTestTask
 //
-//  Created by Alexander Ershov on 30.11.2019.
+//  Created by Alexander Ershov on 19.12.2019.
 //  Copyright © 2019 Alexander Ershov. All rights reserved.
 //
 
 import Foundation
 
-
-/// Represents basic hotel information
-struct BasicHotelInfo {
-    /// Hotel id
+struct DecodableBasicHotelInfo: BasicHotelInfoProtocol {
     let id: Int
-
-    /// Hotel name
     let name: String
-
-    /// Hotel address
     let address: String
-
-    /// Number of stars
     let stars: Double
-
-    /// Distance to the centre of a city
     let distance: Double
-
-    /// Numbers of available suites
     let suitesAvailability: [Int]
 }
 
@@ -39,7 +26,7 @@ struct BasicHotelInfo {
 ///    "distance": 100.0,
 ///    "suites_availability": "1:44:21:87:99:34"
 ///}
-extension BasicHotelInfo: Decodable {
+extension DecodableBasicHotelInfo: Decodable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 

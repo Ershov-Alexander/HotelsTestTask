@@ -15,7 +15,7 @@ class BasicHotelInfoTableViewCell: UITableViewCell {
     @IBOutlet private weak var hotelAddressLabel: UILabel!
     @IBOutlet private weak var distanceToTheCentreLabel: UILabel!
 
-    func fillUI(with hotelInfo: BasicHotelInfo) {
+    func fillUI(with hotelInfo: BasicHotelInfoProtocol) {
         numberOfStarsLabel.text = String.init(repeating: "⭐️", count: Int(hotelInfo.stars))
         hotelNameLabel.text = hotelInfo.name
         numberOfSuitsAvailableLabel.text = "🛏 \(hotelInfo.suitesAvailability.count) suits available"

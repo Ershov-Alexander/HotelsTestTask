@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0492942923ABC91700E21EAB /* DecodableBasicHotelInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0492942823ABC91700E21EAB /* DecodableBasicHotelInfo.swift */; };
+		0492942B23ABC92600E21EAB /* DecodableFullHotelInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0492942A23ABC92600E21EAB /* DecodableFullHotelInfo.swift */; };
 		04DADF9F2392575E004F4E8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DADF9E2392575E004F4E8D /* AppDelegate.swift */; };
 		04DADFA12392575E004F4E8D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DADFA02392575E004F4E8D /* SceneDelegate.swift */; };
 		04DADFA32392575E004F4E8D /* BasicInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DADFA22392575E004F4E8D /* BasicInfoViewController.swift */; };
@@ -14,8 +16,8 @@
 		04DADFA823925760004F4E8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04DADFA723925760004F4E8D /* Assets.xcassets */; };
 		04DADFAB23925760004F4E8D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04DADFA923925760004F4E8D /* LaunchScreen.storyboard */; };
 		04DADFB623925760004F4E8D /* HotelsTestTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DADFB523925760004F4E8D /* HotelsTestTaskTests.swift */; };
-		04DADFC1239258A9004F4E8D /* FullHotelInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DADFC0239258A9004F4E8D /* FullHotelInfo.swift */; };
-		04DADFCC23926F9C004F4E8D /* BasicHotelInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DADFCB23926F9C004F4E8D /* BasicHotelInfo.swift */; };
+		04DADFC1239258A9004F4E8D /* FullHotelInfoProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DADFC0239258A9004F4E8D /* FullHotelInfoProtocol.swift */; };
+		04DADFCC23926F9C004F4E8D /* BasicHotelInfoProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DADFCB23926F9C004F4E8D /* BasicHotelInfoProtocol.swift */; };
 		04DADFD023928A02004F4E8D /* BasicHotelInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DADFCF23928A02004F4E8D /* BasicHotelInfoTableViewCell.swift */; };
 		04E3829D2393C4E2003EB34B /* NetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E3829C2393C4E2003EB34B /* NetworkHandler.swift */; };
 		04E940432395038400EDEF2C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 04E940422395038400EDEF2C /* Alamofire */; };
@@ -33,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0492942823ABC91700E21EAB /* DecodableBasicHotelInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableBasicHotelInfo.swift; sourceTree = "<group>"; };
+		0492942A23ABC92600E21EAB /* DecodableFullHotelInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableFullHotelInfo.swift; sourceTree = "<group>"; };
 		04DADF9B2392575E004F4E8D /* HotelsTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HotelsTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04DADF9E2392575E004F4E8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04DADFA02392575E004F4E8D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -44,8 +48,8 @@
 		04DADFB123925760004F4E8D /* HotelsTestTaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HotelsTestTaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04DADFB523925760004F4E8D /* HotelsTestTaskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelsTestTaskTests.swift; sourceTree = "<group>"; };
 		04DADFB723925760004F4E8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		04DADFC0239258A9004F4E8D /* FullHotelInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullHotelInfo.swift; sourceTree = "<group>"; };
-		04DADFCB23926F9C004F4E8D /* BasicHotelInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicHotelInfo.swift; sourceTree = "<group>"; };
+		04DADFC0239258A9004F4E8D /* FullHotelInfoProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullHotelInfoProtocol.swift; sourceTree = "<group>"; };
+		04DADFCB23926F9C004F4E8D /* BasicHotelInfoProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicHotelInfoProtocol.swift; sourceTree = "<group>"; };
 		04DADFCF23928A02004F4E8D /* BasicHotelInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicHotelInfoTableViewCell.swift; sourceTree = "<group>"; };
 		04E3829C2393C4E2003EB34B /* NetworkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHandler.swift; sourceTree = "<group>"; };
 		04F4AD8C2393A72E00B7F82B /* FullInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullInfoViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +100,16 @@
 			path = FullHotelInfo;
 			sourceTree = "<group>";
 		};
+		0492942723ABC8E100E21EAB /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				04E3829C2393C4E2003EB34B /* NetworkHandler.swift */,
+				0492942823ABC91700E21EAB /* DecodableBasicHotelInfo.swift */,
+				0492942A23ABC92600E21EAB /* DecodableFullHotelInfo.swift */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
 		04DADF922392575E004F4E8D = {
 			isa = PBXGroup;
 			children = (
@@ -140,8 +154,8 @@
 		04E3829E23941777003EB34B /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				04DADFCB23926F9C004F4E8D /* BasicHotelInfo.swift */,
-				04DADFC0239258A9004F4E8D /* FullHotelInfo.swift */,
+				04DADFCB23926F9C004F4E8D /* BasicHotelInfoProtocol.swift */,
+				04DADFC0239258A9004F4E8D /* FullHotelInfoProtocol.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -167,7 +181,7 @@
 		04E940212394F44700EDEF2C /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				04E3829C2393C4E2003EB34B /* NetworkHandler.swift */,
+				0492942723ABC8E100E21EAB /* NetworkService */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -282,9 +296,11 @@
 				04DADFA32392575E004F4E8D /* BasicInfoViewController.swift in Sources */,
 				04DADF9F2392575E004F4E8D /* AppDelegate.swift in Sources */,
 				04E3829D2393C4E2003EB34B /* NetworkHandler.swift in Sources */,
-				04DADFC1239258A9004F4E8D /* FullHotelInfo.swift in Sources */,
+				04DADFC1239258A9004F4E8D /* FullHotelInfoProtocol.swift in Sources */,
 				04DADFA12392575E004F4E8D /* SceneDelegate.swift in Sources */,
-				04DADFCC23926F9C004F4E8D /* BasicHotelInfo.swift in Sources */,
+				04DADFCC23926F9C004F4E8D /* BasicHotelInfoProtocol.swift in Sources */,
+				0492942923ABC91700E21EAB /* DecodableBasicHotelInfo.swift in Sources */,
+				0492942B23ABC92600E21EAB /* DecodableFullHotelInfo.swift in Sources */,
 				04DADFD023928A02004F4E8D /* BasicHotelInfoTableViewCell.swift in Sources */,
 				04F4AD8D2393A72E00B7F82B /* FullInfoViewController.swift in Sources */,
 			);
