@@ -64,26 +64,27 @@ class BasicInfoViewController: UIViewController {
     // MARK: - Utility functions
     private func makeRequestForBasicInfo() {
         activityIndicator.startAnimating()
-        networkHandler.makeRequestForBasicInfo { [weak self] error, data in
+        networkHandler.makeRequestForBasicInfo { [weak self] result in
+            guard let self = self else {
+                return
+            }
             DispatchQueue.main.async {
-                guard let self = self else {
-                    return
-                }
                 self.activityIndicator.stopAnimating()
-                if let error = error {
-                    self.showErrorAlert(with: error)
-                }
-                if let data = data {
-                    self.tableData = data
+                switch result {
+                case .success(let hotelInfos):
+                    self.tableData = hotelInfos
                     self.tableView.reloadData()
                     self.tableView.isHidden = false
+                case .failure(let error):
+                    self.showErrorAlert(with: error)
+                    
                 }
             }
         }
     }
 
-    private func showErrorAlert(with message: String) {
-        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+    private func showErrorAlert(with error: Error) {
+        let alertController = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
         let action = UIAlertAction(title: "Ok", style: .default)
         alertController.addAction(action)
         present(alertController, animated: true, completion: nil)

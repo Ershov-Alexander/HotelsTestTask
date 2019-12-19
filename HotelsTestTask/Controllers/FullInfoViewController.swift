@@ -48,20 +48,22 @@ class FullInfoViewController: UIViewController {
     // MARK: - Network requests
     private func makeRequestForFullInfo() {
         mainActivityIndicator.startAnimating()
-        if let id = basicHotelInfo?.id {
-            networkHandler.makeRequestForFullInfo(with: id) { [weak self] error, data in
-                guard let self = self else {
-                    return
-                }
-                DispatchQueue.main.async {
-                    self.mainActivityIndicator.stopAnimating()
-                    if let error = error {
-                        self.showErrorAlert(with: error)
-                    } else if let data = data {
-                        self.fillUI(with: data)
-                        let imageId = data.image
-                        self.makeRequestForImage(with: imageId)
-                    }
+        guard let id = basicHotelInfo?.id else {
+            return
+        }
+        networkHandler.makeRequestForFullInfo(with: id) { [weak self] result in
+            guard let self = self else {
+                return
+            }
+            DispatchQueue.main.async {
+                self.mainActivityIndicator.stopAnimating()
+                switch result {
+                case .success(let hotelInfo):
+                    self.fillUI(with: hotelInfo)
+                    let imageId = hotelInfo.image
+                    self.makeRequestForImage(with: imageId)
+                case .failure(let error):
+                    self.showErrorAlert(with: error)
                 }
             }
         }
@@ -69,16 +71,17 @@ class FullInfoViewController: UIViewController {
 
     private func makeRequestForImage(with id: Int) {
         imageActivityIndicator.startAnimating()
-        networkHandler.makeRequestForImage(with: id) { [weak self] error, data in
+        networkHandler.makeRequestForImage(with: id) { [weak self] result in
             guard let self = self else {
                 return
             }
             DispatchQueue.main.async {
                 self.imageActivityIndicator.stopAnimating()
-                if let error = error {
+                switch result {
+                case .success(let uiImage):
+                    self.updateImageView(with: uiImage)
+                case .failure(let error):
                     self.showErrorAlert(with: error)
-                } else if let data = data {
-                    self.updateImageView(with: data)
                 }
             }
         }
@@ -119,15 +122,16 @@ class FullInfoViewController: UIViewController {
                 origin: CGPoint(x: 1, y: 1),
                 size: CGSize(width: image.size.width - 2, height: image.size.height - 2)
         )
-        if let croppedCGImage = image.cgImage?.cropping(to: rectToCrop) {
-            let uiImage = UIImage(cgImage: croppedCGImage)
-            hotelImageView.image = uiImage
-            hotelImageView.isHidden = false
+        guard let croppedCGImage = image.cgImage?.cropping(to: rectToCrop) else {
+            return
         }
+        let uiImage = UIImage(cgImage: croppedCGImage)
+        hotelImageView.image = uiImage
+        hotelImageView.isHidden = false
     }
 
-    private func showErrorAlert(with message: String) {
-        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+    private func showErrorAlert(with error: Error) {
+        let alertController = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
         let action = UIAlertAction(title: "Ok", style: .default)
         alertController.addAction(action)
         present(alertController, animated: true, completion: nil)

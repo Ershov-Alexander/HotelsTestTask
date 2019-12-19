@@ -19,37 +19,31 @@ class NetworkHandler {
 
     // MARK: - Public API
     /// Makes request for getting basic hotel info
-    /// - Parameter completionHandler: Invokes when request completed. Takes two optionals: error description and data in `[BasicHotelInfo]` format. Only one optional is defined.
-    func makeRequestForBasicInfo(completionHandler: @escaping (String?, [BasicHotelInfo]?) -> Void) {
-        makeRequestForDecodable(for: .basicHotels, completionHandler: completionHandler)
+    /// - Parameter completionHandler: Invokes when request completed
+    func makeRequestForBasicInfo(completionHandler: @escaping (Result<[BasicHotelInfo], NetworkHandlerError>) -> Void) {
+        makeRequestForDecodable(for: HotelEndPoints.basicHotels.url, completionHandler: completionHandler)
     }
 
     /// Makes request for full hotel info
     /// - Parameters:
     ///   - id: Hotel id
-    ///   - completionHandler: Invokes when request completed. Takes two optionals: error description and data in `FullHotelInfo` format. Only one optional is defined.
-    func makeRequestForFullInfo(with id: Int, completionHandler: @escaping (String?, FullHotelInfo?) -> Void) {
-        makeRequestForDecodable(for: .fullHotelInfo(id: id), completionHandler: completionHandler)
+    ///   - completionHandler: Invokes when request completed
+    func makeRequestForFullInfo(with id: Int, completionHandler: @escaping (Result<FullHotelInfo, NetworkHandlerError>) -> Void) {
+        makeRequestForDecodable(for: HotelEndPoints.fullHotelInfo(id: id).url, completionHandler: completionHandler)
     }
 
     /// Makes request for hotel image
     /// - Parameters:
     ///   - id: Image id
-    ///   - completionHandler: Invokes when request completed. Takes two optionals: error description and data in `UIImage` format. Only one optional is defined.
-    func makeRequestForImage(with id: Int, completionHandler: @escaping (String?, UIImage?) -> Void) {
+    ///   - completionHandler: Invokes when request completed
+    func makeRequestForImage(with id: Int, completionHandler: @escaping (Result<UIImage, NetworkHandlerError>) -> Void) {
         downloadRequest?.cancel()
         downloadRequest = AF.download(HotelEndPoints.image(id: id).url).validate()
         downloadRequest?.responseData { response in
-            switch response.result {
-            case .failure(let error):
-                completionHandler(error.localizedDescription, nil)
-            case .success(let data):
-                if let image = UIImage(data: data) {
-                    completionHandler(nil, image)
-                } else {
-                    completionHandler("Server sent data that is not an image", nil)
-                }
-            }
+            let result = response.result
+                .mapError(NetworkHandler.mapToNetworkHandlerError)
+                .flatMap(NetworkHandler.convertDataToUIImage)
+            completionHandler(result)
         }
     }
 
@@ -60,35 +54,59 @@ class NetworkHandler {
     }
 
     // MARK: - Utility functions
-    private func makeRequestForDecodable<T: Decodable>(for endPoint: HotelEndPoints, completionHandler: @escaping (String?, T?) -> Void) {
+    private func makeRequestForDecodable<T: Decodable>(for endPoint: URL, completionHandler: @escaping (Result<T, NetworkHandlerError>) -> Void) {
         dataRequest?.cancel()
-        dataRequest = AF.request(endPoint.url).validate()
+        dataRequest = AF.request(endPoint).validate()
         dataRequest?.responseDecodable(of: T.self) { response in
-            switch response.result {
-            case .failure(let error):
-                completionHandler(error.localizedDescription, nil)
-            case .success(let data):
-                completionHandler(nil, data)
-            }
+            completionHandler(response.result.mapError(NetworkHandler.mapToNetworkHandlerError))
         }
     }
+    
+    private static func convertDataToUIImage(_ data: Data) -> Result<UIImage, NetworkHandlerError> {
+        if let image = UIImage(data: data) {
+            return .success(image)
+        } else {
+            return .failure(.notAnImage)
+        }
+    }
+    
+    private static func mapToNetworkHandlerError(_ afError: AFError) -> NetworkHandlerError {
+        .networkError(description: afError.localizedDescription)
+    }
+}
 
-    // MARK: - API end points
-    /// API end points
-    private enum HotelEndPoints {
-        case basicHotels
-        case fullHotelInfo(id: Int)
-        case image(id: Int)
+// MARK: Supporting enums
 
-        var url: URL {
-            switch self {
-            case .basicHotels:
-                return URL(string: "https://raw.githubusercontent.com/Ershov-Alexander/HotelsTestTask/master/HotelFiles/0777.json")!
-            case .fullHotelInfo(let id):
-                return URL(string: "https://raw.githubusercontent.com/Ershov-Alexander/HotelsTestTask/master/HotelFiles/\(id).json")!
-            case .image(let id):
-                return URL(string: "https://raw.githubusercontent.com/Ershov-Alexander/HotelsTestTask/master/HotelFiles/\(id).jpg")!
-            }
+/// Errors that might occur in `NetworkHandler`
+enum NetworkHandlerError: Error {
+    case notAnImage
+    case networkError(description: String)
+    
+    var localizedDescription: String {
+        switch self {
+        case .notAnImage:
+            return "Provided data can't be converted to UIImage"
+        case .networkError(let description):
+            return description
+        }
+    }
+}
+
+/// API end points
+enum HotelEndPoints {
+    case basicHotels
+    case fullHotelInfo(id: Int)
+    case image(id: Int)
+
+    var url: URL {
+        let baseUrl = "https://raw.githubusercontent.com/Ershov-Alexander/HotelsTestTask/master/HotelFiles/"
+        switch self {
+        case .basicHotels:
+            return URL(string: "\(baseUrl)0777.json")!
+        case .fullHotelInfo(let id):
+            return URL(string: "\(baseUrl)\(id).json")!
+        case .image(let id):
+            return URL(string: "\(baseUrl)\(id).jpg")!
         }
     }
 }
