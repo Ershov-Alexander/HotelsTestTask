@@ -10,7 +10,7 @@ import Foundation
 
 /// Represents basic hotel information
 protocol BasicHotelInfoProtocol {
-        /// Hotel id
+    /// Hotel id
     var id: Int { get }
 
     /// Hotel name
