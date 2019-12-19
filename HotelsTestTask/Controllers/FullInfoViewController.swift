@@ -118,9 +118,11 @@ class FullInfoViewController: UIViewController {
     }
     
     private func updateImageView(with image: UIImage) {
+        let onePixel = 1.0 / image.scale
+        
         let rectToCrop = CGRect(
-                origin: CGPoint(x: 1, y: 1),
-                size: CGSize(width: image.size.width - 2, height: image.size.height - 2)
+                origin: CGPoint(x: onePixel, y: onePixel),
+                size: CGSize(width: image.size.width - 2 * onePixel, height: image.size.height - 2 * onePixel)
         )
         guard let croppedCGImage = image.cgImage?.cropping(to: rectToCrop) else {
             return
