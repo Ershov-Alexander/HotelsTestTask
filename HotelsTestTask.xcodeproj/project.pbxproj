@@ -70,13 +70,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0499768C23943878008C6B3F /* Controllers */ = {
+		0492942423ABC36A00E21EAB /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				0492942623ABC3AA00E21EAB /* FullHotelInfo */,
+				0492942523ABC39F00E21EAB /* BasicHotelInfo */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		0492942523ABC39F00E21EAB /* BasicHotelInfo */ = {
+			isa = PBXGroup;
+			children = (
+				04DADFCF23928A02004F4E8D /* BasicHotelInfoTableViewCell.swift */,
 				04DADFA22392575E004F4E8D /* BasicInfoViewController.swift */,
+			);
+			path = BasicHotelInfo;
+			sourceTree = "<group>";
+		};
+		0492942623ABC3AA00E21EAB /* FullHotelInfo */ = {
+			isa = PBXGroup;
+			children = (
 				04F4AD8C2393A72E00B7F82B /* FullInfoViewController.swift */,
 			);
-			path = Controllers;
+			path = FullHotelInfo;
 			sourceTree = "<group>";
 		};
 		04DADF922392575E004F4E8D = {
@@ -100,14 +117,13 @@
 		04DADF9D2392575E004F4E8D /* HotelsTestTask */ = {
 			isa = PBXGroup;
 			children = (
+				0492942423ABC36A00E21EAB /* Modules */,
 				04E9401E2394F3CF00EDEF2C /* Supporting files */,
-				0499768C23943878008C6B3F /* Controllers */,
 				04E9401F2394F3FF00EDEF2C /* Storyboards */,
 				04DADFA723925760004F4E8D /* Assets.xcassets */,
 				04DADFAC23925760004F4E8D /* Info.plist */,
-				04E3829E23941777003EB34B /* Model */,
-				04E940202394F44100EDEF2C /* Views */,
-				04E940212394F44700EDEF2C /* Utils */,
+				04E3829E23941777003EB34B /* Entities */,
+				04E940212394F44700EDEF2C /* Services */,
 			);
 			path = HotelsTestTask;
 			sourceTree = "<group>";
@@ -121,13 +137,13 @@
 			path = HotelsTestTaskTests;
 			sourceTree = "<group>";
 		};
-		04E3829E23941777003EB34B /* Model */ = {
+		04E3829E23941777003EB34B /* Entities */ = {
 			isa = PBXGroup;
 			children = (
 				04DADFCB23926F9C004F4E8D /* BasicHotelInfo.swift */,
 				04DADFC0239258A9004F4E8D /* FullHotelInfo.swift */,
 			);
-			path = Model;
+			path = Entities;
 			sourceTree = "<group>";
 		};
 		04E9401E2394F3CF00EDEF2C /* Supporting files */ = {
@@ -148,20 +164,12 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		04E940202394F44100EDEF2C /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				04DADFCF23928A02004F4E8D /* BasicHotelInfoTableViewCell.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		04E940212394F44700EDEF2C /* Utils */ = {
+		04E940212394F44700EDEF2C /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				04E3829C2393C4E2003EB34B /* NetworkHandler.swift */,
 			);
-			path = Utils;
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
