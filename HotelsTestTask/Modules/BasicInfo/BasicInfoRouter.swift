@@ -20,9 +20,10 @@ protocol BasicInfoRouterProtocol: class, RouterWithErrorAlertProtocol {
 
 class BasicInfoRouter: BasicInfoRouterProtocol {
     private let fullInfoViewControllerId = "FullInfoViewController"
+    private let storyboardId = "Main"
 
     private weak var viewController: BasicInfoViewController!
-    private lazy var storyboard = UIStoryboard(name: "Main", bundle: nil)
+    private lazy var storyboard = UIStoryboard(name: storyboardId, bundle: nil)
     
     init(viewController: BasicInfoViewController) {
         self.viewController = viewController
