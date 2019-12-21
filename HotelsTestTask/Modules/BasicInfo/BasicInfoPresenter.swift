@@ -9,7 +9,7 @@
 import Foundation
 
 
-/// Presenter for BasicInfo module
+/// Presenter for `BasicInfo` module
 protocol BasicInfoPresenterProtocol: class {
     
     /// Router
@@ -68,7 +68,7 @@ class BasicInfoPresenter: BasicInfoPresenterProtocol, BasicInfoInteractorDelegat
     }
     
     func configure(cell: BasicInfoCellViewProtocol, at index: IndexPath) {
-        let viewModel = BasicInfoCellViewModel(hotelInfo: interactor.basicHotelInfos[index.row])
+        let viewModel = BasicInfoViewModel(hotelInfo: interactor.basicHotelInfos[index.row])
         cell.configure(with: viewModel)
     }
     

@@ -34,7 +34,6 @@ protocol NetworkServiceProtocol {
     func makeRequestForImage(with id: Int, completionHandler: @escaping (Result<Data, NetworkServiceError>) -> Void)
 }
 
-
 class NetworkService: NetworkServiceProtocol {
     private var dataRequest: DataRequest?
     private var downloadRequest: DownloadRequest?

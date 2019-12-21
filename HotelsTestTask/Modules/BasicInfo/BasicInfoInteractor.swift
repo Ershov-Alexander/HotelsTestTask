@@ -9,7 +9,7 @@
 import Foundation
 
 
-/// Interactor for BasicInfo module
+/// Interactor for `BasicInfo` module
 protocol BasicInfoInteractorProtocol: class {
     
     /// Basic hotel info data
