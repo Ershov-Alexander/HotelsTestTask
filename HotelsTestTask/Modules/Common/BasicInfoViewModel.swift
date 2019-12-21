@@ -28,6 +28,9 @@ protocol BasicInfoViewModelProtocol {
 }
 
 struct BasicInfoViewModel: BasicInfoViewModelProtocol {
+    private let suitsAvailableString = NSLocalizedString("suits available", comment: "")
+    private let distanceToTheCentreString = NSLocalizedString("Distance to the centre", comment: "")
+
     let numberOfStars: String
     let hotelName: String
     let numberOfSuitsAvailable: String
@@ -37,9 +40,9 @@ struct BasicInfoViewModel: BasicInfoViewModelProtocol {
     init(hotelInfo: BasicHotelInfoProtocol) {
         numberOfStars = String(repeating: "⭐️", count: Int(hotelInfo.stars))
         hotelName = hotelInfo.name
-        numberOfSuitsAvailable = "🛏 \(hotelInfo.suitesAvailability.count) suits available"
+        numberOfSuitsAvailable = "🛏 \(hotelInfo.suitesAvailability.count) \(suitsAvailableString)"
         hotelAddress = hotelInfo.address
-        distanceToTheCentre = "🏃‍️ Distance to the centre: \(hotelInfo.distance)"
+        distanceToTheCentre = "🏃‍️ \(distanceToTheCentreString): \(hotelInfo.distance)"
     }
 }
 
