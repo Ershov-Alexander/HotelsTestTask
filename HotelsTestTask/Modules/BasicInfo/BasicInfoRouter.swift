@@ -11,15 +11,11 @@ import UIKit
 
 
 /// Router for `BasicInfo` module
-protocol BasicInfoRouterProtocol: class {
-    
-    /// Presents error alert
-    /// - Parameter error:an error that was occurred
-    func presentErrorAlert(with error: Error)
+protocol BasicInfoRouterProtocol: class, RouterWithErrorAlertProtocol {
     
     /// Presents full info module
     /// - Parameter data: basic hotel info for full info module
-    func presentFullInfoModule(with data: BasicHotelInfoProtocol)
+    func presentFullInfoModule(with hotelInfo: BasicHotelInfoProtocol)
 }
 
 class BasicInfoRouter: BasicInfoRouterProtocol {
@@ -32,14 +28,14 @@ class BasicInfoRouter: BasicInfoRouterProtocol {
         self.viewController = viewController
     }
     
-    func presentFullInfoModule(with data: BasicHotelInfoProtocol) {
+    func presentFullInfoModule(with hotelInfo: BasicHotelInfoProtocol) {
         let fullInfoViewController = storyboard.instantiateViewController(withIdentifier: fullInfoViewControllerId) as! FullInfoViewController
-        fullInfoViewController.basicHotelInfo = data
-        fullInfoViewController.navigationItem.title = data.name
+        fullInfoViewController.navigationItem.title = hotelInfo.name
+        fullInfoViewController.configurator.configure(with: fullInfoViewController, hotelInfo: hotelInfo)
         viewController.navigationController?.pushViewController(fullInfoViewController, animated: true)
     }
     
     func presentErrorAlert(with error: Error) {
-        viewController.showErrorAlert(with: error)
+        viewController.presentErrorAlert(with: error)
     }
 }
