@@ -8,11 +8,13 @@
 
 import UIKit
 
+
 /// Shows table with basic info for all hotels.
 class BasicInfoViewController: UIViewController {
-    // MARK: - Variables and constants
-    private let networkHandler = NetworkHandler()
-    private var tableData: [BasicHotelInfoProtocol] = []
+    
+    // MARK: - VIPER parts
+    var presenter: BasicInfoPresenterProtocol!
+    private let configurator: BasicInfoConfiguratorProtocol = BasicInfoConfigurator()
 
     // MARK: - IBOutlets
     @IBOutlet weak private var tableView: UITableView!
@@ -20,94 +22,85 @@ class BasicInfoViewController: UIViewController {
 
     // MARK: - IBActions
     @IBAction private func sortByDistanceToTheCentre(_ sender: UIBarButtonItem) {
-        tableData = tableData.sorted(by: { $0.distance < $1.distance })
-        tableView.reloadData()
+        presenter.sortByDistanceTapped()
     }
 
     @IBAction private func sortByNumberOfAvailableSuits(_ sender: UIBarButtonItem) {
-        tableData = tableData.sorted(by: { $0.suitesAvailability.count > $1.suitesAvailability.count })
-        tableView.reloadData()
+        presenter.sortByNumberOfSuitsTapped()
     }
 
     // MARK: - View controller life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.dataSource = self
-        self.tableView.isHidden = true
+        tableView.delegate = self
+        
+        configurator.configure(with: self)
     }
 
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        presenter.viewDidAppear()
         if let index = tableView.indexPathForSelectedRow {
             tableView.deselectRow(at: index, animated: true)
-        }
-        if tableData.isEmpty {
-            makeRequestForBasicInfo()
         }
     }
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        networkHandler.cancelRequest()
+        presenter.viewDidDissapear()
     }
+}
 
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let cell = sender as? BasicInfoTableViewCell,
-           let index = tableView.indexPath(for: cell),
-           let vc = segue.destination as? FullInfoViewController {
-            vc.basicHotelInfo = tableData[index.row]
-            vc.navigationItem.title = vc.basicHotelInfo?.name
+// MARK: - BasicInfoViewProtocol
+extension BasicInfoViewController: BasicInfoViewProtocol {
+    func updateTableView() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
         }
     }
-
-    // MARK: - Utility functions
-    private func makeRequestForBasicInfo() {
-        activityIndicator.startAnimating()
-        networkHandler.makeRequestForBasicInfo { [weak self] result in
-            guard let self = self else {
-                return
-            }
-            DispatchQueue.main.async {
-                self.activityIndicator.stopAnimating()
-                switch result {
-                case .success(let hotelInfos):
-                    self.tableData = hotelInfos
-                    self.tableView.reloadData()
-                    self.tableView.isHidden = false
-                case .failure(let error):
-                    self.showErrorAlert(with: error)
-                    
-                }
-            }
+    
+    func runActivityIndicator() {
+        DispatchQueue.main.async {
+            self.activityIndicator.startAnimating()
         }
     }
-
-    private func showErrorAlert(with error: Error) {
-        let alertController = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-        let action = UIAlertAction(title: "Ok", style: .default)
-        alertController.addAction(action)
-        present(alertController, animated: true, completion: nil)
+    
+    func stopActivityIndicator() {
+        DispatchQueue.main.async {
+            self.activityIndicator.stopAnimating()
+        }
     }
-
 }
 
 // MARK: - UITableViewDataSource
 extension BasicInfoViewController: UITableViewDataSource {
+    private var tableViewCellId: String {
+        "BasicHotelInfoCell"
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         1
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        tableData.count
+        presenter.numberOfHotels
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "BasicHotelInfoCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellId, for: indexPath)
         guard let basicInfoCell = cell as? BasicInfoTableViewCell else {
             return cell
         }
-        basicInfoCell.fillUI(with: tableData[indexPath.row])
+        presenter.configure(cell: basicInfoCell, at: indexPath)
         return basicInfoCell
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension BasicInfoViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.tableViewCellTapped(at: indexPath)
     }
 }
