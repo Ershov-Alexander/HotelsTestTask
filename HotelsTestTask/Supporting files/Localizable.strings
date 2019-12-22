@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  HotelsTestTask
+
+  Created by Alexander Ershov on 21.12.2019.
+  Copyright © 2019 Alexander Ershov. All rights reserved.
+*/
+
+// Error alert
+"Error" = "Error";
+"Ok" = "Ok";
+
+// Basic info view model
+"suits available" = "suits available";
+"Distance to the centre" = "Distance to the centre";

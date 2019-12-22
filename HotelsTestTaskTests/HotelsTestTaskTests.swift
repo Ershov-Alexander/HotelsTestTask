@@ -22,7 +22,7 @@ class HotelsTestTaskTests: XCTestCase {
                                  }
                                  """
 
-        let basicHotelInfo = BasicHotelInfo(
+        let basicHotelInfo = DecodableBasicHotelInfo(
                 id: 40611,
                 name: "Belleclaire Hotel",
                 address: "250 West 77th Street, Manhattan",
@@ -31,7 +31,7 @@ class HotelsTestTaskTests: XCTestCase {
                 suitesAvailability: [1, 44, 21, 87, 99, 34]
         )
 
-        let basicHotelInfoDecoded = try! JSONDecoder().decode(BasicHotelInfo.self, from: basicHotelInfoJson.data(using: .utf8)!)
+        let basicHotelInfoDecoded = try! JSONDecoder().decode(DecodableBasicHotelInfo.self, from: basicHotelInfoJson.data(using: .utf8)!)
 
         XCTAssertEqual(basicHotelInfoDecoded.id, basicHotelInfo.id)
         XCTAssertEqual(basicHotelInfoDecoded.name, basicHotelInfo.name)
@@ -72,9 +72,9 @@ class HotelsTestTaskTests: XCTestCase {
                                               "suites_availability": "1:aa"
                                           }
                                           """
-        XCTAssertThrowsError(try JSONDecoder().decode(BasicHotelInfo.self, from: nullValue.data(using: .utf8)!))
-        XCTAssertThrowsError(try JSONDecoder().decode(BasicHotelInfo.self, from: stringEmpty.data(using: .utf8)!))
-        XCTAssertThrowsError(try JSONDecoder().decode(BasicHotelInfo.self, from: incorrectSuitesAvailability.data(using: .utf8)!))
+        XCTAssertThrowsError(try JSONDecoder().decode(DecodableBasicHotelInfo.self, from: nullValue.data(using: .utf8)!))
+        XCTAssertThrowsError(try JSONDecoder().decode(DecodableBasicHotelInfo.self, from: stringEmpty.data(using: .utf8)!))
+        XCTAssertThrowsError(try JSONDecoder().decode(DecodableBasicHotelInfo.self, from: incorrectSuitesAvailability.data(using: .utf8)!))
     }
 
     func testHotelFullInfoDecoding() {
@@ -92,7 +92,7 @@ class HotelsTestTaskTests: XCTestCase {
                                 }
                                 """
 
-        let fullHotelInfo = FullHotelInfo(
+        let fullHotelInfo = DecodableFullHotelInfo(
                 id: 40611,
                 name: "Belleclaire Hotel",
                 address: "250 West 77th Street, Manhattan",
@@ -104,7 +104,7 @@ class HotelsTestTaskTests: XCTestCase {
                 longitude: -73.98130000000000
         )
 
-        let fullHotelInfoDecoded = try! JSONDecoder().decode(FullHotelInfo.self, from: fullHotelInfoJson.data(using: .utf8)!)
+        let fullHotelInfoDecoded = try! JSONDecoder().decode(DecodableFullHotelInfo.self, from: fullHotelInfoJson.data(using: .utf8)!)
 
         XCTAssertEqual(fullHotelInfoDecoded.id, fullHotelInfo.id)
         XCTAssertEqual(fullHotelInfoDecoded.name, fullHotelInfo.name)
@@ -183,10 +183,10 @@ class HotelsTestTaskTests: XCTestCase {
                                }
                                """
 
-        XCTAssertThrowsError(try JSONDecoder().decode(FullHotelInfo.self, from: nullValue.data(using: .utf8)!))
-        XCTAssertThrowsError(try JSONDecoder().decode(FullHotelInfo.self, from: emptyString.data(using: .utf8)!))
-        XCTAssertThrowsError(try JSONDecoder().decode(FullHotelInfo.self, from: incorrectSuitesAvailabilityString.data(using: .utf8)!))
-        XCTAssertThrowsError(try JSONDecoder().decode(FullHotelInfo.self, from: idKeyDoesntExist.data(using: .utf8)!))
-        XCTAssertThrowsError(try JSONDecoder().decode(FullHotelInfo.self, from: imageIdIncorrect.data(using: .utf8)!))
+        XCTAssertThrowsError(try JSONDecoder().decode(DecodableFullHotelInfo.self, from: nullValue.data(using: .utf8)!))
+        XCTAssertThrowsError(try JSONDecoder().decode(DecodableFullHotelInfo.self, from: emptyString.data(using: .utf8)!))
+        XCTAssertThrowsError(try JSONDecoder().decode(DecodableFullHotelInfo.self, from: incorrectSuitesAvailabilityString.data(using: .utf8)!))
+        XCTAssertThrowsError(try JSONDecoder().decode(DecodableFullHotelInfo.self, from: idKeyDoesntExist.data(using: .utf8)!))
+        XCTAssertThrowsError(try JSONDecoder().decode(DecodableFullHotelInfo.self, from: imageIdIncorrect.data(using: .utf8)!))
     }
 }
