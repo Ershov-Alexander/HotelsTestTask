@@ -19,6 +19,7 @@ protocol BasicInfoRouterProtocol: class, RouterWithErrorAlertProtocol {
 }
 
 class BasicInfoRouter: BasicInfoRouterProtocol {
+    
     private let fullInfoViewControllerId = "FullInfoViewController"
     private let storyboardId = "Main"
 
@@ -36,7 +37,7 @@ class BasicInfoRouter: BasicInfoRouterProtocol {
         viewController.navigationController?.pushViewController(fullInfoViewController, animated: true)
     }
 
-    func presentErrorAlert(with error: Error) {
-        viewController.presentErrorAlert(with: error)
+    func presentErrorAlert(with error: Error, retryHandler: @escaping () -> Void) {
+        viewController.presentErrorAlert(with: error, retryHandler: retryHandler)
     }
 }

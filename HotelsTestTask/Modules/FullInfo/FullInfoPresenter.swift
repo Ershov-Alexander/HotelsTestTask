@@ -75,7 +75,10 @@ class FullInfoPresenter: FullInfoPresenterProtocol, FullInfoInteractorDelegate {
     func errorOccurred(error: Error) {
         view.stopMainActivityIndicator()
         view.stopImageActivityIndicator()
-        router.presentErrorAlert(with: error)
+        router.presentErrorAlert(with: error) { [weak self] in
+            self?.view.runMainActivityIndicator()
+            self?.interactor.downloadFullInfo()
+        }
     }
 
     private func getMapRegion(for hotelInfo: FullHotelInfoProtocol) -> MKCoordinateRegion {

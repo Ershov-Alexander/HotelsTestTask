@@ -19,8 +19,8 @@ class FullInfoRouter: FullInfoRouterProtocol {
         self.viewController = viewController
     }
 
-    func presentErrorAlert(with error: Error) {
-        viewController.presentErrorAlert(with: error)
+    func presentErrorAlert(with error: Error, retryHandler: @escaping () -> Void) {
+        viewController.presentErrorAlert(with: error, retryHandler: retryHandler)
     }
 }
 
