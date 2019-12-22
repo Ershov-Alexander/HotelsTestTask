@@ -121,7 +121,17 @@ class FullInfoInteractor: FullInfoInteractorProtocol {
     }
 }
 
+/// FullInfo interactor errors
 enum FullInfoInteractorError: LocalizedError {
     case networkError(description: String)
     case imageError(description: String)
+
+    var errorDescription: String? {
+        switch self {
+        case .networkError(let description):
+            return description
+        case .imageError(let description):
+            return description
+        }
+    }
 }
