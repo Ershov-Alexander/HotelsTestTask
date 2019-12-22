@@ -11,7 +11,7 @@ import UIKit
 
 /// View protocol for `BasicInfo` table view cell
 protocol BasicInfoCellViewProtocol: class {
-    
+
     /// Configures table view cell
     /// - Parameter viewModel: data for configuration
     func configure(with viewModel: BasicInfoViewModelProtocol)

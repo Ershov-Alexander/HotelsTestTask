@@ -14,10 +14,10 @@ protocol FullInfoPresenterProtocol: class {
 
     /// Configures view using basic info provided by `BasicInfo` module
     func configureViewWithBasicInfo()
-    
+
     /// Runs when view did appear
     func viewDidAppear()
-    
+
     /// Runs when view did disappear
     func viewDidDisappear()
 }
@@ -25,22 +25,22 @@ protocol FullInfoPresenterProtocol: class {
 class FullInfoPresenter: FullInfoPresenterProtocol, FullInfoInteractorDelegate {
     // MARK: - Constants
     private let mapScale: CLLocationDistance = 1000
-    
+
     // MARK: - Viper parts
     var router: FullInfoRouterProtocol!
     var interactor: FullInfoInteractorProtocol!
     weak var view: FullInfoViewProtocol!
-    
+
     init(view: FullInfoViewProtocol) {
         self.view = view
     }
-    
+
     // MARK: - FullInfoPresenterProtocol
     func configureViewWithBasicInfo() {
         let viewModel = BasicInfoViewModel(hotelInfo: interactor.basicHotelInfo)
         view.configure(with: viewModel)
     }
-    
+
     func viewDidAppear() {
         guard let _ = interactor.fullHotelInfo else {
             view.runMainActivityIndicator()
@@ -48,11 +48,11 @@ class FullInfoPresenter: FullInfoPresenterProtocol, FullInfoInteractorDelegate {
             return
         }
     }
-    
+
     func viewDidDisappear() {
         interactor.cancelNetworkRequest()
     }
-    
+
     // MARK: - FullInfoInteractorDelegate
     func fullInfoDownloaded() {
         view.stopMainActivityIndicator()
@@ -64,20 +64,20 @@ class FullInfoPresenter: FullInfoPresenterProtocol, FullInfoInteractorDelegate {
         view.runImageActivityIndicator()
         interactor.downloadImage()
     }
-    
+
     func imageDownloaded() {
         view.stopImageActivityIndicator()
         if let image = interactor.image {
             view.setImage(image)
         }
     }
-    
+
     func errorOccurred(error: Error) {
         view.stopMainActivityIndicator()
         view.stopImageActivityIndicator()
         router.presentErrorAlert(with: error)
     }
-    
+
     private func getMapRegion(for hotelInfo: FullHotelInfoProtocol) -> MKCoordinateRegion {
         let location = CLLocation(latitude: hotelInfo.latitude, longitude: hotelInfo.longitude)
         return MKCoordinateRegion(center: location.coordinate, latitudinalMeters: mapScale, longitudinalMeters: mapScale)

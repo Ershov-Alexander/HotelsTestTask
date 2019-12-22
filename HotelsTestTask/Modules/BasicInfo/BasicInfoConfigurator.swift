@@ -19,7 +19,7 @@ class BasicInfoConfigurator: BasicInfoConfiguratorProtocol {
         let presenter = BasicInfoPresenter(view: viewController)
         let interactor = BasicInfoInteractor(delegate: presenter)
         let router = BasicInfoRouter(viewController: viewController)
-        
+
         viewController.presenter = presenter
         presenter.interactor = interactor
         presenter.router = router

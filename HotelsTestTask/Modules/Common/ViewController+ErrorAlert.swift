@@ -13,13 +13,13 @@ extension UIViewController {
     func presentErrorAlert(with error: Error) {
         let errorString = NSLocalizedString("Error", comment: "")
         let okString = NSLocalizedString("Ok", comment: "")
-        
+
         let alertController = UIAlertController(title: errorString,
-                                                message: error.localizedDescription,
-                                                preferredStyle: .alert)
+                message: error.localizedDescription,
+                preferredStyle: .alert)
         let action = UIAlertAction(title: okString, style: .default)
         alertController.addAction(action)
-        
+
         present(alertController, animated: true, completion: nil)
     }
 }

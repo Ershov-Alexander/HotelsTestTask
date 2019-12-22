@@ -11,13 +11,13 @@ import Foundation
 
 /// View for `BasicInfo` module
 protocol BasicInfoViewProtocol: class {
-    
+
     /// Runs activity indicator
     func runActivityIndicator()
-    
+
     /// Stops activity indicator
     func stopActivityIndicator()
-    
+
     /// Updates table view
     func updateTableView()
 }

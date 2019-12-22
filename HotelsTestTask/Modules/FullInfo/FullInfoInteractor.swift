@@ -11,38 +11,38 @@ import UIKit
 
 /// Interactor for `FullInfo` module
 protocol FullInfoInteractorProtocol: class {
-    
+
     /// Basic hotel info
     var basicHotelInfo: BasicHotelInfoProtocol { get }
-    
+
     /// Full hotel info
     var fullHotelInfo: FullHotelInfoProtocol? { get }
-    
+
     /// Hotel image
     var image: UIImage? { get }
-    
+
     /// `FullInfoInteractorProtocol `delegate
     var delegate: FullInfoInteractorDelegate? { get set }
 
     /// Downloads full hotel info
     func downloadFullInfo()
-    
+
     /// Downloads hotel image
     func downloadImage()
-    
+
     /// Cancels network request if needed
     func cancelNetworkRequest()
 }
 
 /// `FullInfoInteractorProtocol `delegate
 protocol FullInfoInteractorDelegate: class {
-    
+
     /// Runs when full hotel info downloaded successfully
     func fullInfoDownloaded()
-    
+
     /// Runs when hotel image downloaded successfully
     func imageDownloaded()
-    
+
     /// Runs when an error occurred (while downloading or image processing)
     /// - Parameter error: error that occurred
     func errorOccurred(error: Error)
@@ -51,13 +51,13 @@ protocol FullInfoInteractorDelegate: class {
 class FullInfoInteractor: FullInfoInteractorProtocol {
     private let networkService: NetworkServiceProtocol
     private let imageService: ImageServiceProtocol
-    
+
     let basicHotelInfo: BasicHotelInfoProtocol
     private(set) var fullHotelInfo: FullHotelInfoProtocol?
     private(set) var image: UIImage?
 
     weak var delegate: FullInfoInteractorDelegate?
-    
+
     init(basicHotelInfo: BasicHotelInfoProtocol,
          networkService: NetworkServiceProtocol = NetworkService(),
          imageService: ImageServiceProtocol = ImageService()) {
@@ -65,14 +65,14 @@ class FullInfoInteractor: FullInfoInteractorProtocol {
         self.imageService = imageService
         self.basicHotelInfo = basicHotelInfo
     }
-    
+
     func downloadFullInfo() {
         networkService.makeRequestForFullInfo(with: basicHotelInfo.id) { [weak self] result in
             guard let self = self else {
                 return
             }
             switch result {
-            case.success(let hotelInfo):
+            case .success(let hotelInfo):
                 self.fullHotelInfo = hotelInfo
                 self.delegate?.fullInfoDownloaded()
             case .failure(let error):
@@ -80,7 +80,7 @@ class FullInfoInteractor: FullInfoInteractorProtocol {
             }
         }
     }
-    
+
     func downloadImage() {
         guard let imageId = fullHotelInfo?.image else {
             return
@@ -90,14 +90,14 @@ class FullInfoInteractor: FullInfoInteractorProtocol {
                 return
             }
             let mappedResult = result
-                .mapError(self.mapNetworkServiceError)
-                .flatMap {
-                    self.imageService.convertDataToImage($0)
-                        .flatMap(self.imageService.cropImage)
-                        .mapError(self.mapImageServiceError)
-                }
+                    .mapError(self.mapNetworkServiceError)
+                    .flatMap {
+                        self.imageService.convertDataToImage($0)
+                                .flatMap(self.imageService.cropImage)
+                                .mapError(self.mapImageServiceError)
+                    }
             switch mappedResult {
-            case.success(let image):
+            case .success(let image):
                 self.image = image
                 self.delegate?.imageDownloaded()
             case .failure(let error):
@@ -105,15 +105,15 @@ class FullInfoInteractor: FullInfoInteractorProtocol {
             }
         }
     }
-    
+
     func cancelNetworkRequest() {
         networkService.cancelRequest()
     }
-    
+
     private func mapNetworkServiceError(_ error: NetworkServiceError) -> FullInfoInteractorError {
         .networkError(description: error.localizedDescription)
     }
-    
+
     private func mapImageServiceError(_ error: ImageServiceError) -> FullInfoInteractorError {
         .imageError(description: error.localizedDescription)
     }

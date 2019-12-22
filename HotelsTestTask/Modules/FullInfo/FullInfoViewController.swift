@@ -36,7 +36,7 @@ class FullInfoViewController: UIViewController {
         super.viewDidAppear(animated)
         presenter.viewDidAppear()
     }
-    
+
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         presenter.viewDidDisappear()
@@ -53,39 +53,39 @@ extension FullInfoViewController: FullInfoViewProtocol {
             self.distanceToTheCentreLabel.text = viewModel.distanceToTheCentre
         }
     }
-    
+
     func setImage(_ image: UIImage) {
         DispatchQueue.main.async {
             self.hotelImageView.image = image
             self.hotelImageView.isHidden = false
         }
     }
-    
+
     func setRegionForMap(_ region: MKCoordinateRegion) {
         DispatchQueue.main.async {
             self.mapView.setRegion(region, animated: true)
             self.mapView.isHidden = false
         }
     }
-    
+
     func runMainActivityIndicator() {
         DispatchQueue.main.async {
             self.mainActivityIndicator.startAnimating()
         }
     }
-    
+
     func stopMainActivityIndicator() {
         DispatchQueue.main.async {
             self.mainActivityIndicator.stopAnimating()
         }
     }
-    
+
     func runImageActivityIndicator() {
         DispatchQueue.main.async {
             self.imageActivityIndicator.startAnimating()
         }
     }
-    
+
     func stopImageActivityIndicator() {
         DispatchQueue.main.async {
             self.imageActivityIndicator.stopAnimating()

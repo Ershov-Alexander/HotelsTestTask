@@ -12,7 +12,7 @@ import Foundation
 protocol FullHotelInfoProtocol {
     /// Basic hotel information
     var basicHotelInfo: BasicHotelInfoProtocol { get }
-    
+
     /// Image id
     var image: Int { get }
 

@@ -10,19 +10,19 @@ import Foundation
 
 /// View model protocol for `BasicInfo` table view cell
 protocol BasicInfoViewModelProtocol {
-    
+
     /// Text for number of start label
     var numberOfStars: String { get }
-    
+
     /// Text for hotel name label
     var hotelName: String { get }
-    
+
     /// Text for number of available suits label
     var numberOfSuitsAvailable: String { get }
-    
+
     /// Text for hotel address label
     var hotelAddress: String { get }
-    
+
     /// Text for distance to the centre label
     var distanceToTheCentre: String { get }
 }
@@ -36,7 +36,7 @@ struct BasicInfoViewModel: BasicInfoViewModelProtocol {
     let numberOfSuitsAvailable: String
     let hotelAddress: String
     let distanceToTheCentre: String
-    
+
     init(hotelInfo: BasicHotelInfoProtocol) {
         numberOfStars = String(repeating: "⭐️", count: Int(hotelInfo.stars))
         hotelName = hotelInfo.name

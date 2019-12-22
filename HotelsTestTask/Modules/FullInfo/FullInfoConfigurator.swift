@@ -19,7 +19,7 @@ class FullInfoConfigurator: FullInfoConfiguratorProtocol {
         let interactor = FullInfoInteractor(basicHotelInfo: hotelInfo)
         interactor.delegate = presenter
         let router = FullInfoRouter(viewController: viewController)
-        
+
         viewController.presenter = presenter
         presenter.interactor = interactor
         presenter.router = router

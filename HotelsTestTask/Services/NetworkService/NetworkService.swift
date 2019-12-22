@@ -13,20 +13,20 @@ import Alamofire
 /// Makes request to the server to get hotel data
 protocol NetworkServiceProtocol {
     var hotelUrl: HotelUrlProtocol { get set }
-    
+
     /// Cancels requests if needed
     func cancelRequest()
-    
+
     /// Makes request for basic hotel info
     /// - Parameter completionHandler: Invokes when request completed
     func makeRequestForBasicInfo(completionHandler: @escaping (Result<[DecodableBasicHotelInfo], NetworkServiceError>) -> Void)
-    
+
     /// Makes request for full hotel info
     /// - Parameters:
     ///   - id: hotel id
     ///   - completionHandler: Invokes when request completed
     func makeRequestForFullInfo(with id: Int, completionHandler: @escaping (Result<DecodableFullHotelInfo, NetworkServiceError>) -> Void)
-    
+
     /// Makes request for hotel image
     /// - Parameters:
     ///   - id: image id
@@ -37,7 +37,7 @@ protocol NetworkServiceProtocol {
 class NetworkService: NetworkServiceProtocol {
     private var dataRequest: DataRequest?
     private var downloadRequest: DownloadRequest?
-    
+
     var hotelUrl: HotelUrlProtocol = HotelUrl()
 
     func makeRequestForBasicInfo(completionHandler: @escaping (Result<[DecodableBasicHotelInfo], NetworkServiceError>) -> Void) {
@@ -72,7 +72,7 @@ class NetworkService: NetworkServiceProtocol {
             completionHandler(response.result.mapError(NetworkService.mapToNetworkHandlerError))
         }
     }
-    
+
     private static func mapToNetworkHandlerError(_ afError: AFError) -> NetworkServiceError {
         .networkError(description: afError.localizedDescription)
     }
@@ -81,7 +81,7 @@ class NetworkService: NetworkServiceProtocol {
 /// Errors that might occur in `NetworkService`
 enum NetworkServiceError: LocalizedError {
     case networkError(description: String)
-    
+
     var errorDescription: String? {
         switch self {
         case .networkError(let description):

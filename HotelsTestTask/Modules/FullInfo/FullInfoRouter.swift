@@ -9,15 +9,16 @@
 import Foundation
 
 /// Router for `FullInfo` module
-protocol FullInfoRouterProtocol: class, RouterWithErrorAlertProtocol { }
+protocol FullInfoRouterProtocol: class, RouterWithErrorAlertProtocol {
+}
 
 class FullInfoRouter: FullInfoRouterProtocol {
     private weak var viewController: FullInfoViewController!
-    
+
     init(viewController: FullInfoViewController) {
         self.viewController = viewController
     }
-    
+
     func presentErrorAlert(with error: Error) {
         viewController.presentErrorAlert(with: error)
     }

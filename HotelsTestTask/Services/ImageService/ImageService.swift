@@ -11,11 +11,11 @@ import UIKit
 
 /// Provides function to operate with images
 protocol ImageServiceProtocol {
-    
+
     /// Convert data to UIImage if possible, otherwise returns error
     /// - Parameter data: data to convert to an image
     func convertDataToImage(_ data: Data) -> Result<UIImage, ImageServiceError>
-    
+
     /// Crops image by 1 px if possible, otherwise returns error
     /// - Parameter image: image to crop
     func cropImage(_ image: UIImage) -> Result<UIImage, ImageServiceError>
@@ -29,7 +29,7 @@ class ImageService: ImageServiceProtocol {
             return .failure(.failedToCropImage)
         }
     }
-    
+
     func cropImage(_ image: UIImage) -> Result<UIImage, ImageServiceError> {
         let onePixel = 1.0 / image.scale
         let rectToCrop = CGRect(
@@ -48,7 +48,7 @@ class ImageService: ImageServiceProtocol {
 enum ImageServiceError: LocalizedError {
     case failedToConvertDataToImage
     case failedToCropImage
-    
+
     var errorDescription: String? {
         switch self {
         case .failedToConvertDataToImage:
