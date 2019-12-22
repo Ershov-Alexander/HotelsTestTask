@@ -14,5 +14,6 @@ import UIKit
 protocol RouterWithErrorAlertProtocol {
     /// Presents error alert
     /// - Parameter error:an error that was occurred
-    func presentErrorAlert(with error: Error)
+    /// - Parameter retryHandler: retry logic to run after `error`
+    func presentErrorAlert(with error: Error, retryHandler: @escaping () -> Void)
 }

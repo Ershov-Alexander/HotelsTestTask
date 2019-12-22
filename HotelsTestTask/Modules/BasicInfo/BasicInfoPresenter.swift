@@ -91,6 +91,9 @@ class BasicInfoPresenter: BasicInfoPresenterProtocol, BasicInfoInteractorDelegat
     }
 
     func errorOccurred(error: Error) {
-        router.presentErrorAlert(with: error)
+        router.presentErrorAlert(with: error) { [weak self] in
+            self?.view.runActivityIndicator()
+            self?.interactor.downloadBasicHotelInfo()
+        }
     }
 }

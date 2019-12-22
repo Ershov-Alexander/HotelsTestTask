@@ -9,6 +9,7 @@
 // Error alert
 "Error" = "Error";
 "Ok" = "Ok";
+"Try again" = "Try again";
 
 // Basic info view model
 "suits available" = "suits available";
