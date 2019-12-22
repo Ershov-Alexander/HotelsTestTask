@@ -12,7 +12,7 @@ import Alamofire
 
 /// Makes request to the server to get hotel data
 protocol NetworkServiceProtocol {
-    
+
     /// Used to get URLs for requests
     var hotelUrl: HotelUrlProtocol { get set }
 
@@ -31,7 +31,7 @@ protocol NetworkServiceProtocol {
     ///   - id: image id
     ///   - completionHandler: Invokes when request completed
     func makeRequestForImage(with id: Int, completionHandler: @escaping (Result<Data, NetworkServiceError>) -> Void)
-    
+
     /// Cancels requests if needed
     func cancelRequest()
 }

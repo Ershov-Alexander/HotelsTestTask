@@ -93,10 +93,10 @@ class FullInfoInteractor: FullInfoInteractorProtocol {
                     .mapError(self.mapNetworkServiceError)
                     .flatMap {
                         self.imageService.convertDataToImage($0)
-                        .flatMap { imageToCrop in
-                            self.imageService.cropImage(imageToCrop, numberOfPixels: 1)
-                        }
-                        .mapError(self.mapImageServiceError)
+                                .flatMap { imageToCrop in
+                                    self.imageService.cropImage(imageToCrop, numberOfPixels: 1)
+                                }
+                                .mapError(self.mapImageServiceError)
                     }
             switch mappedResult {
             case .success(let image):
