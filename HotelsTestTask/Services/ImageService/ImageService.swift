@@ -16,9 +16,10 @@ protocol ImageServiceProtocol {
     /// - Parameter data: data to convert to an image
     func convertDataToImage(_ data: Data) -> Result<UIImage, ImageServiceError>
 
-    /// Crops image by 1 px if possible, otherwise returns error
+    /// Crops image by `numberOfPixels` px if possible, otherwise returns error
     /// - Parameter image: image to crop
-    func cropImage(_ image: UIImage) -> Result<UIImage, ImageServiceError>
+    /// - Parameter numberOfPixels: number of pixels to crop from each side
+    func cropImage(_ image: UIImage, numberOfPixels: Int) -> Result<UIImage, ImageServiceError>
 }
 
 class ImageService: ImageServiceProtocol {
@@ -30,11 +31,11 @@ class ImageService: ImageServiceProtocol {
         }
     }
 
-    func cropImage(_ image: UIImage) -> Result<UIImage, ImageServiceError> {
-        let onePixel = 1.0 / image.scale
+    func cropImage(_ image: UIImage, numberOfPixels: Int) -> Result<UIImage, ImageServiceError> {
+        let pixelsToCrop = CGFloat(numberOfPixels) / image.scale
         let rectToCrop = CGRect(
-                origin: CGPoint(x: onePixel, y: onePixel),
-                size: CGSize(width: image.size.width - 2 * onePixel, height: image.size.height - 2 * onePixel)
+                origin: CGPoint(x: pixelsToCrop, y: pixelsToCrop),
+                size: CGSize(width: image.size.width - 2 * pixelsToCrop, height: image.size.height - 2 * pixelsToCrop)
         )
         guard let croppedCGImage = image.cgImage?.cropping(to: rectToCrop) else {
             return .failure(.failedToCropImage)
@@ -44,7 +45,7 @@ class ImageService: ImageServiceProtocol {
     }
 }
 
-/// Emage service errors
+/// Image service errors
 enum ImageServiceError: LocalizedError {
     case failedToConvertDataToImage
     case failedToCropImage

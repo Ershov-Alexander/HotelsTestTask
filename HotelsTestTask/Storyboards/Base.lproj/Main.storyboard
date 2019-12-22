@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8qa-xH-ICk">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -14,28 +12,28 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="BasicInfoViewController" customModule="HotelsTestTask" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Prx-22-z8j">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BasicHotelInfoCell" rowHeight="163" id="sLv-mm-PJD" customClass="BasicInfoTableViewCell" customModule="HotelsTestTask" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="163"/>
+                                        <rect key="frame" x="0.0" y="28" width="600" height="163"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sLv-mm-PJD" id="2dx-ZW-w0h">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="163"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="163"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⭐️⭐️⭐️⭐️⭐️" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uJc-ew-fZz">
-                                                    <rect key="frame" x="144.5" y="11" width="125" height="24"/>
+                                                    <rect key="frame" x="237.5" y="11" width="125" height="24"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="32" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GYB-wu-hTl">
-                                                    <rect key="frame" x="20" y="50.5" width="374" height="101.5"/>
+                                                    <rect key="frame" x="15" y="50.5" width="570" height="101.5"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacingType="standard" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t8L-ev-8AT">
                                                             <rect key="frame" x="0.0" y="0.0" width="193.5" height="54"/>
@@ -94,7 +92,7 @@
                                 </prototypes>
                             </tableView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="IjE-mm-VDh">
-                                <rect key="frame" x="188.5" y="456.5" width="37" height="37"/>
+                                <rect key="frame" x="281.5" y="303.5" width="37" height="37"/>
                                 <color key="color" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
                         </subviews>
@@ -137,7 +135,7 @@
             <objects>
                 <viewController storyboardIdentifier="FullInfoViewController" id="B9C-96-aHE" customClass="FullInfoViewController" customModule="HotelsTestTask" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MNp-kA-Fas">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FGa-9b-w8x">
@@ -229,14 +227,14 @@
                     </view>
                     <navigationItem key="navigationItem" title="Belleclaire Hotel" id="nuM-te-wRB"/>
                     <connections>
-                        <outlet property="addressLabel" destination="uGy-ih-Zet" id="HjR-F5-xJN"/>
                         <outlet property="distanceToTheCentreLabel" destination="N4F-vC-L9t" id="92P-5H-die"/>
+                        <outlet property="hotelAddressLabel" destination="uGy-ih-Zet" id="HjR-F5-xJN"/>
                         <outlet property="hotelImageView" destination="HMB-kz-3YE" id="gDe-j4-C49"/>
                         <outlet property="imageActivityIndicator" destination="6B3-kd-ID7" id="Xpr-uy-tWI"/>
                         <outlet property="mainActivityIndicator" destination="YbC-fL-d6X" id="bhX-e8-sB2"/>
                         <outlet property="mapView" destination="rdu-cQ-ONZ" id="o5a-KL-Ual"/>
+                        <outlet property="numberOfStarsLabel" destination="oXi-rq-LDH" id="xPO-Xc-6US"/>
                         <outlet property="numberOfSuitsAvailableLabel" destination="0Ho-Z4-vrP" id="lZj-4H-kkc"/>
-                        <outlet property="starsLabel" destination="oXi-rq-LDH" id="xPO-Xc-6US"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jk5-I3-ZSv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

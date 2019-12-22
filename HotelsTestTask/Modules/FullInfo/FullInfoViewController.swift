@@ -16,10 +16,10 @@ class FullInfoViewController: UIViewController {
     let configurator: FullInfoConfiguratorProtocol = FullInfoConfigurator()
 
     // MARK: - IBOutlets
-    @IBOutlet private weak var starsLabel: UILabel!
+    @IBOutlet private weak var numberOfStarsLabel: UILabel!
     @IBOutlet private weak var hotelImageView: UIImageView!
     @IBOutlet private weak var numberOfSuitsAvailableLabel: UILabel!
-    @IBOutlet private weak var addressLabel: UILabel!
+    @IBOutlet private weak var hotelAddressLabel: UILabel!
     @IBOutlet private weak var mapView: MKMapView!
     @IBOutlet private weak var distanceToTheCentreLabel: UILabel!
     @IBOutlet private weak var imageActivityIndicator: UIActivityIndicatorView!
@@ -47,9 +47,9 @@ class FullInfoViewController: UIViewController {
 extension FullInfoViewController: FullInfoViewProtocol {
     func configure(with viewModel: BasicInfoViewModelProtocol) {
         DispatchQueue.main.async {
-            self.starsLabel.text = viewModel.numberOfStars
+            self.numberOfStarsLabel.text = viewModel.numberOfStars
             self.numberOfSuitsAvailableLabel.text = viewModel.numberOfSuitsAvailable
-            self.addressLabel.text = viewModel.hotelAddress
+            self.hotelAddressLabel.text = viewModel.hotelAddress
             self.distanceToTheCentreLabel.text = viewModel.distanceToTheCentre
         }
     }

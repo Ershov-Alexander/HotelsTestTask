@@ -38,9 +38,9 @@ protocol BasicInfoInteractorDelegate: class {
     /// - Parameter newData: new value for `basicHotelInfos`
     func hotelInfoUpdated(newData: [BasicHotelInfoProtocol])
 
-    /// Invokes when error occured while downloading `basicHotelInfos`
+    /// Invokes when error occurred while downloading `basicHotelInfos`
     /// - Parameter error: error that accoured
-    func errorOccurredWhileDownloading(error: Error)
+    func errorOccurred(error: Error)
 }
 
 class BasicInfoInteractor: BasicInfoInteractorProtocol {
@@ -50,9 +50,8 @@ class BasicInfoInteractor: BasicInfoInteractorProtocol {
     var basicHotelInfos: [BasicHotelInfoProtocol] = []
     weak var delegate: BasicInfoInteractorDelegate?
 
-    required init(delegate: BasicInfoInteractorDelegate, networkService: NetworkServiceProtocol = NetworkService()) {
+    init(networkService: NetworkServiceProtocol = NetworkService()) {
         self.networkService = networkService
-        self.delegate = delegate
     }
 
     func downloadBasicHotelInfo() {
@@ -65,7 +64,7 @@ class BasicInfoInteractor: BasicInfoInteractorProtocol {
                 self.basicHotelInfos = hotelInfos
                 self.delegate?.hotelInfoUpdated(newData: hotelInfos)
             case .failure(let error):
-                self.delegate?.errorOccurredWhileDownloading(error: error)
+                self.delegate?.errorOccurred(error: error)
             }
         }
     }

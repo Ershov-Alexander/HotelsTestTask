@@ -17,9 +17,10 @@ protocol BasicInfoConfiguratorProtocol: class {
 class BasicInfoConfigurator: BasicInfoConfiguratorProtocol {
     func configure(with viewController: BasicInfoViewController) {
         let presenter = BasicInfoPresenter(view: viewController)
-        let interactor = BasicInfoInteractor(delegate: presenter)
+        let interactor = BasicInfoInteractor()
         let router = BasicInfoRouter(viewController: viewController)
 
+        interactor.delegate = presenter
         viewController.presenter = presenter
         presenter.interactor = interactor
         presenter.router = router

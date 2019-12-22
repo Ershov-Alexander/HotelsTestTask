@@ -9,7 +9,7 @@
 import UIKit
 
 
-/// Shows table with basic info for all hotels.
+/// Shows table with basic info for all hotels
 class BasicInfoViewController: UIViewController {
 
     // MARK: - VIPER parts
@@ -49,7 +49,7 @@ class BasicInfoViewController: UIViewController {
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        presenter.viewDidDissapear()
+        presenter.viewDidDisappear()
     }
 }
 

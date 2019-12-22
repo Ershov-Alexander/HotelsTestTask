@@ -14,7 +14,7 @@ import UIKit
 protocol BasicInfoRouterProtocol: class, RouterWithErrorAlertProtocol {
 
     /// Presents full info module
-    /// - Parameter data: basic hotel info for full info module
+    /// - Parameter data: basic hotel info for `FullInfo` module
     func presentFullInfoModule(with hotelInfo: BasicHotelInfoProtocol)
 }
 

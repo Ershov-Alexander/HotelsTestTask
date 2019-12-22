@@ -12,10 +12,9 @@ import Alamofire
 
 /// Makes request to the server to get hotel data
 protocol NetworkServiceProtocol {
+    
+    /// Used to get URLs for requests
     var hotelUrl: HotelUrlProtocol { get set }
-
-    /// Cancels requests if needed
-    func cancelRequest()
 
     /// Makes request for basic hotel info
     /// - Parameter completionHandler: Invokes when request completed
@@ -32,6 +31,9 @@ protocol NetworkServiceProtocol {
     ///   - id: image id
     ///   - completionHandler: Invokes when request completed
     func makeRequestForImage(with id: Int, completionHandler: @escaping (Result<Data, NetworkServiceError>) -> Void)
+    
+    /// Cancels requests if needed
+    func cancelRequest()
 }
 
 class NetworkService: NetworkServiceProtocol {
@@ -78,7 +80,7 @@ class NetworkService: NetworkServiceProtocol {
     }
 }
 
-/// Errors that might occur in `NetworkService`
+/// Network service errors
 enum NetworkServiceError: LocalizedError {
     case networkError(description: String)
 

@@ -18,11 +18,11 @@ protocol BasicInfoPresenterProtocol: class {
     /// Returns number of hotels for table view
     var numberOfHotels: Int { get }
 
-    /// Invokes when view disappeared
+    /// Invokes when view appeared
     func viewDidAppear()
 
-    /// Invokes when view appeared
-    func viewDidDissapear()
+    /// Invokes when view disappeared
+    func viewDidDisappear()
 
     /// Configure table view cell with hotel info data
     /// - Parameters:
@@ -45,7 +45,7 @@ class BasicInfoPresenter: BasicInfoPresenterProtocol, BasicInfoInteractorDelegat
     weak var view: BasicInfoViewProtocol!
     var interactor: BasicInfoInteractorProtocol!
 
-    required init(view: BasicInfoViewProtocol) {
+    init(view: BasicInfoViewProtocol) {
         self.view = view
     }
 
@@ -63,7 +63,7 @@ class BasicInfoPresenter: BasicInfoPresenterProtocol, BasicInfoInteractorDelegat
         }
     }
 
-    func viewDidDissapear() {
+    func viewDidDisappear() {
         interactor.cancelNetworkRequest()
     }
 
@@ -90,7 +90,7 @@ class BasicInfoPresenter: BasicInfoPresenterProtocol, BasicInfoInteractorDelegat
         view.stopActivityIndicator()
     }
 
-    func errorOccurredWhileDownloading(error: Error) {
+    func errorOccurred(error: Error) {
         router.presentErrorAlert(with: error)
     }
 }

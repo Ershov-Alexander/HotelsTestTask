@@ -17,11 +17,11 @@ class FullInfoConfigurator: FullInfoConfiguratorProtocol {
     func configure(with viewController: FullInfoViewController, hotelInfo: BasicHotelInfoProtocol) {
         let presenter = FullInfoPresenter(view: viewController)
         let interactor = FullInfoInteractor(basicHotelInfo: hotelInfo)
-        interactor.delegate = presenter
         let router = FullInfoRouter(viewController: viewController)
 
         viewController.presenter = presenter
         presenter.interactor = interactor
         presenter.router = router
+        interactor.delegate = presenter
     }
 }

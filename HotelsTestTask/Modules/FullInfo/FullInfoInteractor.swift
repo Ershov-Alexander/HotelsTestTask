@@ -37,13 +37,13 @@ protocol FullInfoInteractorProtocol: class {
 /// `FullInfoInteractorProtocol `delegate
 protocol FullInfoInteractorDelegate: class {
 
-    /// Runs when full hotel info downloaded successfully
+    /// Invokes when full hotel info downloaded successfully
     func fullInfoDownloaded()
 
-    /// Runs when hotel image downloaded successfully
+    /// Invokes when hotel image downloaded successfully
     func imageDownloaded()
 
-    /// Runs when an error occurred (while downloading or image processing)
+    /// Invokes when an error occurred (while downloading or image processing)
     /// - Parameter error: error that occurred
     func errorOccurred(error: Error)
 }
@@ -93,8 +93,10 @@ class FullInfoInteractor: FullInfoInteractorProtocol {
                     .mapError(self.mapNetworkServiceError)
                     .flatMap {
                         self.imageService.convertDataToImage($0)
-                                .flatMap(self.imageService.cropImage)
-                                .mapError(self.mapImageServiceError)
+                        .flatMap { imageToCrop in
+                            self.imageService.cropImage(imageToCrop, numberOfPixels: 1)
+                        }
+                        .mapError(self.mapImageServiceError)
                     }
             switch mappedResult {
             case .success(let image):
