@@ -31,7 +31,9 @@ class BasicInfoRouter: BasicInfoRouterProtocol {
     }
 
     func presentFullInfoModule(with hotelInfo: BasicHotelInfoProtocol) {
-        let fullInfoViewController = storyboard.instantiateViewController(withIdentifier: fullInfoViewControllerId) as! FullInfoViewController
+        guard let fullInfoViewController = storyboard.instantiateViewController(withIdentifier: fullInfoViewControllerId) as? FullInfoViewController else {
+            return
+        }
         fullInfoViewController.navigationItem.title = hotelInfo.name
         fullInfoViewController.configurator.configure(with: fullInfoViewController, hotelInfo: hotelInfo)
         viewController.navigationController?.pushViewController(fullInfoViewController, animated: true)
